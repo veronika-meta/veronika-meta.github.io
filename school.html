@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уроки по таргету для онлайн-школ — Вероника Дубоссарская</title>
+    <meta name="description" content="Записанные уроки и модули по Facebook/Instagram рекламе для онлайн-школ. Аудит устаревшего контента, создание под ключ. От $250. Кейс: Lerna (партнёр Skillbox).">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0c0c14; --bg2: #13131f; --bg3: #1a1a2e;
+            --card: #16162a; --card2: #1e1e35;
+            --border: rgba(255,255,255,0.07);
+            --text: #f0f0f5; --muted: #888899;
+            --accent: #7c5cbf; --accent2: #a855f7; --accent3: #60a5fa;
+            --green: #34d399; --gold: #f59e0b; --radius: 16px;
+        }
+        html { scroll-behavior: smooth; }
+        html { background: var(--bg); }
+        body { background: transparent; color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(12,12,20,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+        .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+        .nav-logo { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a { padding: 6px 12px; border-radius: 8px; font-size: 13px; color: var(--muted); text-decoration: none; transition: all 0.15s; }
+        .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-btn { padding: 7px 16px; border-radius: 8px; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent2); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+        .nav-btn:hover { background: rgba(168,85,247,0.25); }
+        @media (max-width: 580px) { .nav-links { display: none; } }
+
+        .hero { padding: 90px 0 70px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(96,165,250,0.15) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 80%, rgba(168,85,247,0.08) 0%, transparent 60%); pointer-events: none; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--accent3); letter-spacing: 0.05em; margin-bottom: 28px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; background: linear-gradient(135deg, #fff 0%, rgba(168,139,250,0.9) 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; max-width: 700px; }
+        .hero-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: opacity 0.15s; }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.15s; }
+        .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+        .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+        .hstat { text-align: left; }
+        .hstat-n { display: block; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
+        .hstat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+        section { padding: 72px 0; }
+        section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+
+        /* FORMATS */
+        .formats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        @media (max-width: 640px) { .formats-grid { grid-template-columns: 1fr; } }
+        .fcard { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; position: relative; overflow: hidden; transition: border-color 0.2s; }
+        .fcard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); opacity: 0.3; }
+        .fcard.hi::before { opacity: 1; }
+        .fcard.hi { border-color: rgba(168,85,247,0.3); }
+        .fcard:hover { border-color: rgba(168,85,247,0.25); }
+        .fcard-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.25); color: var(--accent2); padding: 3px 10px; border-radius: 100px; margin-bottom: 16px; }
+        .fcard h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 10px; }
+        .fcard p { font-size: 0.8rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+        .fcard-price { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; }
+        .fcard-note { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+
+        /* TOPICS */
+        .topics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        @media (max-width: 560px) { .topics-grid { grid-template-columns: 1fr; } }
+        .tcard { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; transition: border-color 0.2s; }
+        .tcard:hover { border-color: rgba(96,165,250,0.25); }
+        .tcard-num { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent3); margin-bottom: 8px; }
+        .tcard h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 5px; }
+        .tcard p { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+
+        /* CASE */
+        .case-card { background: var(--card); border: 1px solid rgba(96,165,250,0.25); border-radius: var(--radius); padding: 36px; position: relative; overflow: hidden; }
+        .case-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent3), var(--accent2)); }
+        .case-logo { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent3); margin-bottom: 14px; }
+        .case-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+        .case-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; margin-bottom: 22px; }
+        .case-metrics { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 22px; border-top: 1px solid var(--border); }
+        .cm { }
+        .cm-n { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg, var(--accent3), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 4px; }
+        .cm-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        /* ZONES */
+        .zones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+        @media (max-width: 560px) { .zones-grid { grid-template-columns: 1fr; } }
+        .zone-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+        .zone-card.me { border-color: rgba(168,85,247,0.25); }
+        .zone-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+        .zone-card.me .zone-label { color: var(--accent2); }
+        .zone-card.school .zone-label { color: var(--accent3); }
+        .zone-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .zone-list li { font-size: 0.82rem; color: var(--muted); padding-left: 14px; position: relative; line-height: 1.5; }
+        .zone-list li::before { content: '—'; position: absolute; left: 0; font-size: 0.8rem; }
+        .zone-card.me .zone-list li::before { color: var(--accent2); opacity: 0.5; }
+        .zone-card.school .zone-list li::before { color: var(--accent3); opacity: 0.5; }
+
+        .format-note { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 2px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-q { width: 100%; background: transparent; border: none; padding: 20px 24px; text-align: left; color: var(--text); font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; transition: color 0.15s; }
+        .faq-q:hover { color: var(--accent2); }
+        .faq-icon { font-size: 1rem; color: var(--muted); transition: transform 0.3s; min-width: 16px; font-weight: 300; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 24px 20px; font-size: 0.84rem; color: var(--muted); line-height: 1.8; border-top: 1px solid var(--border); padding-top: 16px; }
+        .faq-item.open .faq-a { max-height: 400px; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent2); }
+        .faq-item.open .faq-q { color: var(--accent2); }
+        .faq-item.open { border-color: rgba(168,85,247,0.25); }
+
+        /* EXPERT */
+        .expert-grid { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 640px) { .expert-grid { grid-template-columns: 1fr; } }
+        .expert-photo { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; background: var(--card2); border: 1px solid var(--border); }
+        .expert-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .expert-name { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .expert-role { font-size: 0.8rem; color: var(--accent2); font-weight: 600; margin-bottom: 18px; letter-spacing: 0.04em; }
+        .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.85; margin-bottom: 12px; }
+
+        .cta-block { text-align: center; padding: 80px 0; }
+        .cta-block h2 { margin-bottom: 12px; }
+        .cta-block p { font-size: 0.92rem; color: var(--muted); max-width: 400px; margin: 0 auto 32px; line-height: 1.8; }
+
+        footer { border-top: 1px solid var(--border); padding: 32px 0; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-logo { font-size: 13px; font-weight: 700; color: var(--accent2); }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+        .footer-links a:hover { color: var(--text); }
+
+        .float-btn { position: fixed; bottom: 24px; right: 24px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.82rem; box-shadow: 0 4px 24px rgba(168,85,247,0.35); opacity: 0; pointer-events: none; z-index: 50; transition: opacity 0.2s, transform 0.2s; }
+        .float-btn.show { opacity: 1; pointer-events: auto; }
+        .float-btn:hover { transform: translateY(-2px); }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.78rem; text-decoration: none; margin-bottom: 20px; transition: color 0.15s; }
+        .back-link:hover { color: var(--text); }
+    </style>
+</head>
+<body>
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;"></canvas>
+
+
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">Вероника · Уроки для онлайн-школ</span>
+        <ul class="nav-links">
+            <li><a href="#formats">Форматы</a></li>
+            <li><a href="#topics">Темы</a></li>
+            <li><a href="#case">Кейс</a></li>
+        </ul>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="nav-btn">Написать →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" class="back-link">← Все услуги</a>
+        <div class="hero-tag">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 6l2 2 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Для создателей онлайн-курсов
+        </div>
+        <h1>Приглашённый эксперт по таргетированной рекламе для вашей онлайн-школы</h1>
+        <p class="hero-sub">Провожу уроки и создаю модули по Facebook/Instagram рекламе для онлайн-школ — как приглашённый эксперт. Актуальная практика, реальные кейсы, понятная подача.</p>
+        <div class="hero-actions">
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+            <a href="#formats" class="btn-ghost">Форматы и цены</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hstat">
+                <span class="hstat-n">$250</span>
+                <span class="hstat-l">разовый урок</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">$400+</span>
+                <span class="hstat-l">модуль под ключ</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">5+</span>
+                <span class="hstat-l">лет в таргете</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="audience">
+    <div class="container">
+        <div class="eyebrow">Для кого</div>
+        <h2>Подходит, если ваш курс<br>включает маркетинг или SMM</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">✓ Да</div>
+                <h3 style="font-size:.9rem;font-weight:700;margin-bottom:6px;">Есть модуль по таргету — устарел</h3>
+                <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Интерфейс Facebook Ads, алгоритмы, форматы меняются каждый год. Если курс снимали 1–2+ года назад — часть материала уже неактуальна.</p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">✓ Да</div>
+                <h3 style="font-size:.9rem;font-weight:700;margin-bottom:6px;">Модуля по таргету нет вообще</h3>
+                <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Курс по SMM, инфобизнесу или маркетингу без блока по платному трафику — неполный. Добавляю готовый модуль под структуру вашей программы.</p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">✓ Да</div>
+                <h3 style="font-size:.9rem;font-weight:700;margin-bottom:6px;">Нужен конкретный урок под программу</h3>
+                <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Не весь модуль, а одна тема которой не хватает в вашей программе.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FORMATS -->
+<section id="formats" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Форматы</div>
+        <h2>Три варианта работы</h2>
+        <div class="formats-grid">
+            <div class="fcard">
+                <div class="fcard-badge">Быстро</div>
+                <h3>Разовый записанный урок</h3>
+                <p>Одна тема под вашу программу: скрипт, структура, запись. Монтаж и загрузка на платформу — на вашей стороне.</p>
+                <div class="fcard-price">$250</div>
+                <div class="fcard-note">за 1 урок</div>
+            </div>
+            <div class="fcard hi">
+                <div class="fcard-badge">Популярно</div>
+                <h3>Модуль под ключ</h3>
+                <p>Скрипты + структура уроков + запись. Полный блок по таргету под вашу программу. Монтаж и дизайн презентаций — на вашей стороне.</p>
+                <div class="fcard-price">от $400</div>
+                <div class="fcard-note">зависит от объёма</div>
+            </div>
+            <div class="fcard">
+                <div class="fcard-badge">Комплексно</div>
+                <h3>Аудит + обновление</h3>
+                <p>Смотрю что есть: что устарело, что убрать, что обновить, чего не хватает — и делаю новую версию под ключ.</p>
+                <div class="fcard-price">По запросу</div>
+                <div class="fcard-note">обсуждается индивидуально</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Темы</div>
+        <h2>Что закрываю</h2>
+        <div class="topics-grid">
+            <div class="tcard">
+                <div class="tcard-num">Тема 01</div>
+                <h4>Facebook Ads Manager</h4>
+                <p>Создание рекламной кампании от А до Я: структура, цели, настройки — актуальный интерфейс.</p>
+            </div>
+            <div class="tcard">
+                <div class="tcard-num">Тема 02</div>
+                <h4>Таргетинг и аудитории</h4>
+                <p>Аудитории по интересам, ретаргет, lookalike — кому показывать и как находить похожих на лучших клиентов.</p>
+            </div>
+            <div class="tcard">
+                <div class="tcard-num">Тема 03</div>
+                <h4>Тексты и креативы</h4>
+                <p>Что писать в объявлении, как выбрать формат, что цепляет в ленте и Stories в 2024–2025.</p>
+            </div>
+            <div class="tcard">
+                <div class="tcard-num">Тема 04</div>
+                <h4>AI-инструменты для рекламы</h4>
+                <p>Как использовать AI для создания рекламных текстов, идей для креативов и ускорения работы с кабинетом.</p>
+            </div>
+            <div class="tcard">
+                <div class="tcard-num">Тема 05</div>
+                <h4>Запуск, тест и оптимизация</h4>
+                <p>Как читать результаты, какие показатели важны, как понять что работает и что отключать.</p>
+            </div>
+            <div class="tcard">
+                <div class="tcard-num">Тема 06</div>
+                <h4>Разборы кейсов</h4>
+                <p>Реальные примеры из практики: что запускали, какие связки сработали, какие ошибки разобрали.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Зоны ответственности</div>
+        <h2>Кто что делает</h2>
+        <div class="zones-grid">
+            <div class="zone-card me">
+                <div class="zone-label">Я</div>
+                <ul class="zone-list">
+                    <li>Аудит существующего модуля (если есть)</li>
+                    <li>Скрипты для каждого урока</li>
+                    <li>Структура и логика подачи материала</li>
+                    <li>Формат записи обсуждается отдельно</li>
+                    <li>Домашние задания</li>
+                </ul>
+            </div>
+            <div class="zone-card school">
+                <div class="zone-label">Школа</div>
+                <ul class="zone-list">
+                    <li>Съёмочная команда и студия (если необходимо)</li>
+                    <li>Монтаж видео (если необходимо)</li>
+                    <li>Дизайн презентаций (по моей структуре, если необходимо)</li>
+                    <li>Загрузка на платформу</li>
+                </ul>
+            </div>
+        </div>
+        <div class="format-note">
+            <strong style="color:var(--text);">Материалы</strong> после записи остаются у вас навсегда.
+        </div>
+    </div>
+</section>
+
+<!-- CASE -->
+<section id="case" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Кейс</div>
+        <h2>Что уже сделано</h2>
+        <div class="case-card">
+            <div class="case-logo">Lerna · Партнёр Skillbox в Беларуси</div>
+            <div class="case-title">Полная переработка модуля по таргетированной рекламе</div>
+            <div class="case-desc">Провела аудит существующего модуля: убрала устаревшее, обновила актуальное, добавила новые блоки по креативам и AI-инструментам. Написала скрипты, выстроила структуру каждого урока, подготовила презентации — приехала на съёмку. Монтаж и загрузка на платформу — на стороне школы.</div>
+            <div class="case-metrics">
+                <div class="cm">
+                    <div class="cm-n">24</div>
+                    <div class="cm-l">видеоурока</div>
+                </div>
+                <div class="cm">
+                    <div class="cm-n">15</div>
+                    <div class="cm-l">текстовых файлов</div>
+                </div>
+                <div class="cm">
+                    <div class="cm-n">100%</div>
+                    <div class="cm-l">актуальный материал</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="padding-top:0;">
+    <div class="container" style="text-align:center;">
+        <div class="eyebrow">Кейсы</div>
+        <h2>Результаты клиентов</h2>
+        <p style="color:var(--muted);margin-bottom:32px;">Больше 50 проектов за 5 лет — от малого бизнеса до крупных образовательных платформ.</p>
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank" class="btn-primary">Смотреть все кейсы → портфолио</a>
+    </div>
+</section>
+
+<!-- EXPERT -->
+<section id="about" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Кто записывает</div>
+        <div class="expert-grid">
+            <div class="expert-photo">
+                <img src="photo.jpg" alt="Вероника Дубоссарская">
+            </div>
+            <div>
+                <div class="expert-name">Вероника Дубоссарская</div>
+                <div class="expert-role">Таргетолог · CEO MetaPR · Эксперт для Lerna</div>
+                <p class="expert-bio">5+ лет в таргетированной рекламе Facebook/Instagram. Работала с нишами от B2B до инфобизнеса, от Беларуси до США. Знаю материал практически, а не теоретически — все кейсы из реальной работы.</p>
+                <p class="expert-bio">Для Lerna (партнёр Skillbox в Беларуси) записала 24 видеоурока с нуля. Умею объяснять сложное просто — это важно в образовательном контексте.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-block" id="contact">
+    <div class="container">
+        <div class="eyebrow">Следующий шаг</div>
+        <h2>Обсудим ваш проект?</h2>
+        <p>Напишите в Telegram — расскажите что есть и что нужно, договоримся на созвон.</p>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-logo">Вероника Дубоссарская · Уроки для онлайн-школ</span>
+            <div class="footer-links">
+                <a href="https://t.me/vdubossarskaya" target="_blank">Telegram</a>
+                <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank">Портфолио</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/vdubossarskaya" target="_blank" class="float-btn" id="floatBtn">Написать →</a>
+
+<script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    const floatBtn = document.getElementById('floatBtn');
+    window.addEventListener('scroll', () => {
+        floatBtn.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+</script>
+<script>
+
+// P6 — Плавающие частицы
+(function(){
+  const c=document.getElementById('bg-canvas');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const ctx=c.getContext('2d');
+  let pts=[];
+  function initPts(){
+    pts=Array.from({length:45},function(){
+      return{x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.5+0.5,vy:0.4+Math.random()*0.6,a:Math.random()*0.35+0.08};
+    });
+  }
+  initPts();
+  window.addEventListener('resize',initPts);
+  function animate(){
+    const w=c.width,h=c.height;
+    ctx.clearRect(0,0,w,h);
+    pts.forEach(function(p){
+      p.y-=p.vy;
+      p.a-=0.0015;
+      if(p.y<0||p.a<=0){p.y=h;p.x=Math.random()*w;p.a=Math.random()*0.35+0.08;}
+      ctx.fillStyle='rgba(168,85,247,'+p.a+')';
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+</script>
+</body>
+</html>

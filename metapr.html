@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaPR — Агентский трафик для инфобизнеса · Вероника Дубоссарская</title>
+    <meta name="description" content="Мультиканальный трафик под ключ для онлайн-школ и инфобизнеса. Meta, TikTok, YouTube. Команда 12 специалистов, наши кабинеты, RU и EN рынки.">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0c0c14;
+            --bg2: #13131f;
+            --bg3: #1a1a2e;
+            --card: #16162a;
+            --card2: #1e1e35;
+            --border: rgba(255,255,255,0.07);
+            --text: #f0f0f5;
+            --muted: #888899;
+            --accent: #7c5cbf;
+            --accent2: #a855f7;
+            --accent3: #60a5fa;
+            --green: #34d399;
+            --gold: #f59e0b;
+            --radius: 16px;
+        }
+
+        html { scroll-behavior: smooth; }
+        html { background: var(--bg); }
+        body { background: transparent; color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(12,12,20,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+        }
+        .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+        .nav-logo { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a { padding: 6px 12px; border-radius: 8px; font-size: 13px; color: var(--muted); text-decoration: none; transition: all 0.15s; }
+        .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-btn {
+            padding: 7px 16px; border-radius: 8px;
+            background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3);
+            color: var(--accent2); font-size: 13px; font-weight: 600;
+            text-decoration: none; white-space: nowrap; transition: all 0.15s;
+        }
+        .nav-btn:hover { background: rgba(168,85,247,0.25); }
+        @media (max-width: 580px) { .nav-links { display: none; } }
+
+        /* HERO */
+        .hero {
+            padding: 90px 0 70px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,92,191,0.2) 0%, transparent 70%),
+                        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(96,165,250,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(124,92,191,0.15); border: 1px solid rgba(124,92,191,0.3);
+            border-radius: 100px; padding: 6px 16px;
+            font-size: 12px; color: var(--accent2); letter-spacing: 0.05em;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 800; letter-spacing: -0.03em; line-height: 1.08;
+            background: linear-gradient(135deg, #fff 0%, rgba(168,139,250,0.9) 50%, #60a5fa 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 20px; max-width: 720px;
+        }
+        .hero-sub { font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--accent2); color: #fff;
+            padding: 11px 22px; border-radius: 9px;
+            text-decoration: none; font-weight: 700; font-size: 0.875rem;
+            transition: opacity 0.15s;
+        }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.05); color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 11px 22px; border-radius: 9px;
+            text-decoration: none; font-weight: 500; font-size: 0.875rem;
+            transition: all 0.15s;
+        }
+        .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+        /* STATS */
+        .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+        .hstat { text-align: left; }
+        .hstat-n {
+            display: block; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+            background: linear-gradient(135deg, var(--accent2), var(--accent3));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 5px;
+        }
+        .hstat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        /* EYEBROW */
+        .eyebrow {
+            font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent2); margin-bottom: 10px;
+        }
+        section { padding: 72px 0; }
+        section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+
+        /* CHANNELS */
+        .channels-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+        .ch-badge {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 10px 16px;
+            font-size: 0.8rem; font-weight: 600; color: var(--text);
+        }
+        .ch-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .ch-dot.meta { background: #1877f2; }
+        .ch-dot.tiktok { background: #00f2ea; }
+        .ch-dot.yt { background: #ff0000; }
+
+        /* FOR WHOM */
+        .aud-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
+        .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
+        .acard {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 22px 24px;
+            transition: border-color 0.2s;
+        }
+        .acard:hover { border-color: rgba(168,85,247,0.25); }
+        .acard.dim { background: var(--bg2); opacity: 0.65; }
+        .acard-mark { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+        .acard.yes .acard-mark { color: var(--green); }
+        .acard.no .acard-mark { color: var(--muted); }
+        .acard h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+        .acard p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* INCLUDED */
+        .inc-list { display: flex; flex-direction: column; gap: 2px; }
+        .inc-item {
+            display: flex; gap: 22px; align-items: flex-start;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 22px 24px;
+            transition: border-color 0.2s;
+        }
+        .inc-item:hover { border-color: rgba(168,85,247,0.25); }
+        .inc-num { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 22px; padding-top: 2px; letter-spacing: 0.06em; }
+        .inc-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+        .inc-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* ROADMAP */
+        .roadmap { display: flex; flex-direction: column; gap: 2px; }
+        .rm-item {
+            display: flex; gap: 22px; align-items: flex-start;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 22px 24px;
+        }
+        .rm-step { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 24px; padding-top: 2px; }
+        .rm-timing { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .rm-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+        .rm-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* CASES */
+        .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .cases-grid { grid-template-columns: 1fr; } }
+        .ccase {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px;
+            transition: border-color 0.2s;
+            display: grid;
+            grid-template-rows: subgrid;
+            grid-row: span 5;
+            align-content: start;
+        }
+        .ccase:hover { border-color: rgba(168,85,247,0.3); }
+        .ctag { font-size: 11px; color: var(--muted); display: block; margin-bottom: 10px; }
+        .ctitle { font-size: 0.95rem; font-weight: 700; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+        .cmetrics { display: flex; flex-direction: column; gap: 0; }
+        .cm { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .cm:last-child { border-bottom: none; }
+        .cm-l { font-size: 0.75rem; color: var(--muted); }
+        .cm-v { font-size: 0.88rem; font-weight: 700; }
+        .cm-v.hi { color: var(--green); }
+        .cm-v.purple { color: var(--accent2); }
+        .cnote { font-size: 0.7rem; color: var(--muted); margin-top: 12px; line-height: 1.6; padding-top: 10px; border-top: 1px solid var(--border); }
+        .case-img-wrap { width: 100%; margin-top: 0; border-radius: 8px; overflow: hidden; background: #fff; }
+        .case-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        .case-img-placeholder {
+            width: 100%;
+            height: 160px;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.15);
+            border-radius: 8px;
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.25);
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* PRICING */
+        .pcard-featured {
+            background: var(--card); border: 1px solid rgba(168,85,247,0.3);
+            border-radius: var(--radius); padding: 36px; position: relative; overflow: hidden;
+            max-width: 560px;
+        }
+        .pcard-featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+        .pname { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+        .pprice-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+        .pprice { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+        .pprice-sep { color: var(--muted); font-size: 1.1rem; }
+        .pprice-pct { font-size: 1.5rem; font-weight: 800; color: var(--accent2); }
+        .pnote { font-size: 0.75rem; color: var(--muted); margin-bottom: 24px; }
+        .pfor { font-size: 0.83rem; color: #c5c5d5; line-height: 1.7; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+        .plist { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+        .plist li { font-size: 0.8rem; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5; }
+        .plist li::before { content: '—'; position: absolute; left: 0; color: var(--accent2); opacity: 0.5; }
+        .pcta {
+            display: block; text-align: center; padding: 13px 20px;
+            border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.88rem;
+            transition: all 0.15s;
+        }
+        .pcta.primary { background: var(--accent2); color: #fff; }
+        .pcta.primary:hover { opacity: 0.85; }
+        .pricing-note { margin-top: 16px; max-width: 560px; font-size: 0.76rem; color: var(--muted); line-height: 1.8; }
+
+        /* EXPERT */
+        .expert-grid { display: grid; grid-template-columns: 240px 1fr; gap: 48px; align-items: start; }
+        @media (max-width: 640px) { .expert-grid { grid-template-columns: 1fr; } }
+        .expert-photo {
+            aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden;
+            background: var(--card2); border: 1px solid var(--border);
+        }
+        .expert-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .expert-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .expert-role { font-size: 0.8rem; color: var(--accent2); font-weight: 600; margin-bottom: 20px; letter-spacing: 0.04em; }
+        .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+        .expert-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .estat {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 16px; text-align: center; position: relative; overflow: hidden;
+        }
+        .estat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
+        .estat-n { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+        .estat-l { font-size: 0.65rem; color: var(--muted); margin-top: 3px; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.06em; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 2px; }
+        .faq-item {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; overflow: hidden;
+        }
+        .faq-q {
+            width: 100%; background: transparent; border: none;
+            padding: 20px 24px; text-align: left; color: var(--text);
+            font-size: 0.88rem; font-weight: 600; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; gap: 16px;
+            font-family: inherit; transition: color 0.15s;
+        }
+        .faq-q:hover { color: var(--accent2); }
+        .faq-icon { font-size: 1rem; color: var(--muted); transition: transform 0.3s; min-width: 16px; font-weight: 300; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 24px 20px; font-size: 0.84rem; color: var(--muted); line-height: 1.8; border-top: 1px solid var(--border); padding-top: 16px; }
+        .faq-item.open .faq-a { max-height: 400px; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent2); }
+        .faq-item.open .faq-q { color: var(--accent2); }
+        .faq-item.open { border-color: rgba(168,85,247,0.25); }
+
+        /* CTA */
+        .cta-block { text-align: center; padding: 80px 0; }
+        .cta-block h2 { margin-bottom: 12px; }
+        .cta-block p { font-size: 0.92rem; color: var(--muted); max-width: 420px; margin: 0 auto 32px; line-height: 1.8; }
+
+        /* FOOTER */
+        footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--muted); font-size: 13px; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-logo { font-size: 13px; font-weight: 700; color: var(--accent2); }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+        .footer-links a:hover { color: var(--text); }
+
+        /* FLOAT */
+        .float-btn {
+            position: fixed; bottom: 24px; right: 24px;
+            background: var(--accent2); color: #fff;
+            padding: 11px 22px; border-radius: 100px;
+            text-decoration: none; font-weight: 700; font-size: 0.82rem;
+            box-shadow: 0 4px 24px rgba(168,85,247,0.35);
+            opacity: 0; pointer-events: none; z-index: 50;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .float-btn.show { opacity: 1; pointer-events: auto; }
+        .float-btn:hover { transform: translateY(-2px); }
+
+        /* BACK LINK */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: var(--muted); font-size: 0.78rem; text-decoration: none;
+            margin-bottom: 20px; transition: color 0.15s;
+        }
+        .back-link:hover { color: var(--text); }
+    
+        
+
+        </style>
+</head>
+<body>
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;"></canvas>
+
+
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">MetaPR · Агентство трафика</span>
+        <ul class="nav-links">
+            <li><a href="#included">Состав</a></li>
+            <li><a href="#cases">Кейсы</a></li>
+            <li><a href="#pricing">Цены</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="nav-btn">Написать →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" class="back-link">← Все услуги</a>
+        <div class="hero-tag">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+            Meta · TikTok · YouTube · Агентский трафик
+        </div>
+        <h1>Трафик под ключ для инфобизнеса — мультиканально, на двух рынках</h1>
+        <p class="hero-sub">MetaPR — агентство трафика для онлайн-школ и инфобизнеса. Команда 12 специалистов, собственные кабинеты, запуски на русскоязычный и зарубежный рынок. Вы занимаетесь продуктом — мы системно управляем трафиком.</p>
+        <div class="hero-actions">
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Обсудить проект →</a>
+            <a href="#cases" class="btn-ghost">Смотреть кейсы</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hstat">
+                <span class="hstat-n">12</span>
+                <span class="hstat-l">специалистов на проекте</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">$5 000 000+</span>
+                <span class="hstat-l">рекламных бюджетов под управлением</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">200–300%</span>
+                <span class="hstat-l">ROAS по проектам</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">RU+EN</span>
+                <span class="hstat-l">рынки запусков</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="audience">
+    <div class="container">
+        <div class="eyebrow">Для кого</div>
+        <h2>Агентский трафик — для тех,<br>кто уже работает и хочет расти</h2>
+        <div class="aud-label">Подходит, если</div>
+        <div class="aud-grid">
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Онлайн-школа или инфобизнес от $10К/мес</h3>
+                <p>Есть рабочий продукт, выстроенные продажи и маркетинг. Бизнес работает — нужна система трафика, которая масштабирует результат.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Есть воронка и отдел продаж</h3>
+                <p>Оцифрованная воронка, работающий отдел продаж. Мы приводим целевых лидов в уже рабочую систему.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Хотите масштабироваться без операционки</h3>
+                <p>Агентство работает как отдел трафика внутри вашего бизнеса — без вашего погружения в детали, связки и площадки. Вы получаете результат, мы управляем процессом.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Нужны зарубежные рынки</h3>
+                <p>Запуски на EN рынке: обучающие продукты, трейдинг, инфобизнес. Tier-1 аудитория — США, Канада, Европа, ОАЭ. Понимаем специфику зарубежных воронок, мессенджеров и Tier-1 аудитории.</p>
+            </div>
+        </div>
+        <div class="aud-label" style="margin-top:28px;">Не подойдёт, если</div>
+        <div class="aud-grid">
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Совокупный бюджет (фикс + %) ниже $1 280/мес</h3>
+                <p>Это минимальный порог работы с командой. Рекламный бюджет выделяется отдельно.</p>
+            </div>
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Хотите результат уже завтра</h3>
+                <p>Стабильный результат требует тестов и времени. В первые две недели активно ищем рабочие связки для вашего проекта — по результатам масштабируем.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INCLUDED -->
+<section id="included" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Состав</div>
+        <h2>Что входит в работу с командой</h2>
+        <div class="inc-list">
+            <div class="inc-item">
+                <span class="inc-num">01</span>
+                <div class="inc-body">
+                    <h4>Предстартовый аудит — стратегия и KPI</h4>
+                    <p>Разбираем ваш продукт, воронку, конкурентов и прошлый опыт в рекламе. Согласуем стратегию, каналы и ключевые метрики до запуска.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">02</span>
+                <div class="inc-body">
+                    <h4>Кабинеты на стороне агентства — без блокировок</h4>
+                    <p>Работаем через свои аккаунты Meta, TikTok, YouTube. При блокировке одного кабинета трафик идёт через другие — мы управляем этим сами. В 90% случаев решаем оперативно, без вашего участия в технической стороне.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">03</span>
+                <div class="inc-body">
+                    <h4>Команда 12 специалистов на проекте</h4>
+                    <p>Проджект-менеджеры, таргетологи, креативный отдел (монтаж, дизайн) — каждый закрывает свою зону. Не один человек на всё, а специалисты с чёткой ответственностью.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">04</span>
+                <div class="inc-body">
+                    <h4>Каналы под ваш продукт и рынок</h4>
+                    <p>Meta, TikTok, YouTube — начинаем с одного канала, масштабируем на следующие при хорошем результате. Никакой рекламы ради рекламы — только туда, где ваша аудитория.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">05</span>
+                <div class="inc-body">
+                    <h4>Отчётность на всех уровнях</h4>
+                    <p>Каждый день видите ключевые показатели в таблице. Каждую неделю — полный отчёт: что работает, что нет, что планируем дальше.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">06</span>
+                <div class="inc-body">
+                    <h4>Аналитика и масштабирование</h4>
+                    <p>Постоянно отслеживаем ROAS, CPL и воронку целиком. Слабые связки останавливаем, рабочие масштабируем. Подключаем новые каналы по мере роста.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Как работаем</div>
+        <h2>Как устроен процесс</h2>
+        <div class="roadmap">
+            <div class="rm-item">
+                <span class="rm-step">01</span>
+                <div class="rm-body">
+                    <div class="rm-timing">День 1–7 · Предстарт</div>
+                    <h4>Аудит, онбординг, доступы</h4>
+                    <p>Аудит воронки и прошлых запусков. Созвон: согласуем стратегию, KPI, каналы. Настраиваем аналитику, получаем доступы. Максимум — неделя до старта.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">02</span>
+                <div class="rm-body">
+                    <div class="rm-timing">День 7–10 · Запуск</div>
+                    <h4>Первые запуски и погружение в проект</h4>
+                    <p>Делаем первые запуски и смотрим на данные. Параллельно погружаемся в весь путь клиента — не только в трафик. Смотрим воронку, при необходимости подключаемся к отделу продаж: помогаем улучшить обработку лидов, если видим потери на входе. Нам важен итоговый результат, а не просто открут бюджета.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">03</span>
+                <div class="rm-body">
+                    <div class="rm-timing">Неделя 2–4 · Оптимизация</div>
+                    <h4>Масштабируем то, что работает</h4>
+                    <p>Слабые связки останавливаем, рабочие масштабируем. CPL стабилизируется — вы знаете цену каждого лида, можете прогнозировать выручку и планировать следующий шаг.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">04</span>
+                <div class="rm-body">
+                    <div class="rm-timing">Месяц 2+ · Рост</div>
+                    <h4>Новые каналы, новые рынки</h4>
+                    <p>Подключаем дополнительные каналы, тестируем зарубежные рынки, масштабируем бюджет туда, где выше отдача.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CASES -->
+<section id="cases" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Кейсы</div>
+        <h2>Результаты проектов MetaPR</h2>
+        <div class="cases-grid">
+            <div class="ccase">
+                <span class="ctag">📦 Онлайн-школа для WB-менеджеров · Meta + TikTok + YouTube · 1 год</span>
+                <div class="ctitle">WB Manager</div>
+                <div class="case-img-wrap"><img src="images/case-wb-manager.png" alt="WB Manager" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$97 000</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$299 000</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×3</span></div>
+                    <div class="cm"><span class="cm-l">Регистраций</span><span class="cm-v purple">108 306</span></div>
+                </div>
+                <div class="cnote">Сначала вывели Meta до ROAS 300% — только потом подключили TikTok и YouTube. Бюджет масштабировался в выходные: объём зрителей в эфире напрямую определял выручку трёхдневника.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">📈 Трейдинг / финансы · EN рынок · USA, Canada, EU · 1 год</span>
+                <div class="ctitle">Образовательная платформа по трейдингу</div>
+                <div class="case-img-wrap"><img src="images/case-trading.png" alt="Образовательная платформа по трейдингу" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$800 000+</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$1 500 000+</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×2 (лучший запуск ×3)</span></div>
+                    <div class="cm"><span class="cm-l">Лидов</span><span class="cm-v purple">89 000</span></div>
+                </div>
+                <div class="cnote">Tier-1 рынок. До 200 рекламных кабинетов одновременно — без остановок при блокировках.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">🌍 Коучинг / инфопродукты · EN рынок · 8 дней</span>
+                <div class="ctitle">Зарубежный запуск (Дженни)</div>
+                <div class="case-img-wrap"><img src="images/case-jenny.png" alt="Зарубежный запуск (Дженни)" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$5 000</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$20 000</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×4+</span></div>
+                    <div class="cm"><span class="cm-l">Регистраций</span><span class="cm-v purple">1 032</span></div>
+                </div>
+                <div class="cnote">Подняли доходимость до вебинара в WhatsApp с 21% до 51% — это напрямую повлияло на итоговую выручку.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">🚀 Обучение запускам · EN рынок · USA, Canada, EU</span>
+                <div class="ctitle">Обучение запускам</div>
+                <div class="case-img-wrap"><img src="images/case-afnan.png" alt="Обучение запускам" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$51 000</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$113 000</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×2.2</span></div>
+                    <div class="cm"><span class="cm-l">Регистраций</span><span class="cm-v purple">84 130</span></div>
+                </div>
+                <div class="cnote">Живой 3-дневный марафон. 10 касаний на каждом этапе воронки через 3 канала трафика. На момент записи кейса ещё $160К заказов в работе у отдела продаж.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">🎓 EdTech · Курсы для девушек · КЗ · 3 недели</span>
+                <div class="ctitle">Qool.pro</div>
+                <div class="case-img-wrap"><img src="images/case-qool.png" alt="Qool.pro" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$13 000</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$42 000</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×3 (ROMI 223%)</span></div>
+                    <div class="cm"><span class="cm-l">Регистраций</span><span class="cm-v purple">4 736</span></div>
+                </div>
+                <div class="cnote">Оптимизировали не под цену лида, а под выручку — нашли рабочие связки и масштабировали их.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">🎓 EdTech · Школа турагентов · СНГ + Европа · 6 мес</span>
+                <div class="ctitle">Work in Travel</div>
+                <div class="case-img-wrap"><img src="images/case-travel.png" alt="Work in Travel" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$18 835</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$38 186</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×2 (203%)</span></div>
+                    <div class="cm"><span class="cm-l">Регистраций</span><span class="cm-v purple">20 900</span></div>
+                </div>
+                <div class="cnote">Воронка с 3-дневным прогревом, сегментация по болям ЦА. Лид $0.90 — ×2 к вложениям за 6 месяцев.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">💼 Консалтинг · Выход из операционки · RU рынок</span>
+                <div class="ctitle">ЭВО — консалтинг для предпринимателей</div>
+                <div class="case-img-wrap"><img src="images/case-frolov.png" alt="ЭВО — консалтинг для предпринимателей" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$41 000</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$238 000+</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">~580%</span></div>
+                    <div class="cm"><span class="cm-l">Квал. лидов</span><span class="cm-v purple">1 000+</span></div>
+                </div>
+                <div class="cnote">До нас лид стоил $100, ROMI −30%. Собственные кабинеты, видео самого эксперта и живая обратная связь с отделом продаж по каждому лиду — вышли на $39 за квалифицированный лид.</div>
+            </div>
+            <div class="ccase">
+                <span class="ctag">🎓 EdTech · Таргетированная реклама · КЗ + СНГ + Европа · 7 мес</span>
+                <div class="ctitle">Школа по таргету</div>
+                <div class="case-img-wrap"><img src="images/case-bustaew.png" alt="Школа по таргету" class="case-img"></div>
+                <div class="cmetrics">
+                    <div class="cm"><span class="cm-l">Рекламный бюджет</span><span class="cm-v">$81 727</span></div>
+                    <div class="cm"><span class="cm-l">Выручка</span><span class="cm-v">$245 000</span></div>
+                    <div class="cm"><span class="cm-l">ROAS</span><span class="cm-v hi">×3</span></div>
+                    <div class="cm"><span class="cm-l">Регистраций</span><span class="cm-v purple">44 067</span></div>
+                </div>
+                <div class="cnote">7 месяцев на бюджетах 1.5–3К$/сутки. $1.85 за лид удерживали при масштабе — прирост участников +30%.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Стоимость</div>
+        <h2>Прозрачное ценообразование</h2>
+        <div class="pcard-featured">
+            <div class="pname">Агентский трафик под ключ</div>
+            <div class="pprice-row">
+                <span class="pprice">$500</span>
+                <span class="pprice-sep">+</span>
+                <span class="pprice-pct">15%</span>
+                <span style="font-size:0.85rem;color:var(--muted)">от рекламного бюджета</span>
+            </div>
+            <div class="pnote">Рекламный бюджет выделяется отдельно · минимум $1 280/мес совокупно</div>
+            <div class="pfor">Для онлайн-школ и инфобизнеса с оборотом от $10К/мес, готовых к системному масштабированию трафика.</div>
+            <ul class="plist">
+                <li>Предстартовый аудит, стратегия и KPI</li>
+                <li>Наши кабинеты — Meta, TikTok, YouTube</li>
+                <li>Проджект-менеджеры, таргетологи, креативный отдел</li>
+                <li>Meta, TikTok, YouTube — каналы под вашу аудиторию</li>
+                <li>Ежедневный / еженедельный / ежемесячный отчёт</li>
+                <li>Аналитика воронки, масштабирование, новые каналы</li>
+                <li>Запуски на RU, EN, ОАЭ рынки</li>
+            </ul>
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="pcta primary">Обсудить проект →</a>
+        </div>
+        <p class="pricing-note">* При рекламном бюджете $5 000/мес и ROAS ×3 — выручка $15 000, стоимость агентства $1 250, это 8% от результата. Чем выше бюджет — тем выгоднее экономика.</p>
+    </div>
+</section>
+
+<!-- EXPERT -->
+<section id="about" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">CEO MetaPR</div>
+        <div class="expert-grid">
+            <div class="expert-photo">
+                <img src="photo.jpg" alt="Вероника Дубоссарская — CEO MetaPR">
+            </div>
+            <div>
+                <div class="expert-name">Вероника Дубоссарская</div>
+                <div class="expert-role">CEO · MetaPR · Агентство трафика</div>
+                <p class="expert-bio">Начинала как таргетолог — прошла путь до CEO агентства. MetaPR — это команда 12 специалистов: проджект-менеджеры, таргетологи, креативный отдел (монтаж, дизайн)..</p>
+                <p class="expert-bio">Работаем с онлайн-школами и инфобизнесом более 5 лет — русскоязычный и зарубежный рынки. Понимаю не только трафик, но и воронку, экономику проекта, что превращает лид в продажу.</p>
+                <p class="expert-bio">Реклама MetaPR принесла клиентам более $15 миллионов. За первые 4 месяца 2026 года — больше $1 млн рекламного бюджета в Meta, Google и TikTok.</p>
+                <div class="expert-stats">
+                    <div class="estat">
+                        <div class="estat-n">5+</div>
+                        <div class="estat-l">лет в трафике</div>
+                    </div>
+                    <div class="estat">
+                        <div class="estat-n">12</div>
+                        <div class="estat-l">специалистов</div>
+                    </div>
+                    <div class="estat">
+                        <div class="estat-n">RU+EN</div>
+                        <div class="estat-l">рынки</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">FAQ</div>
+        <h2>Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">Работали с агентством раньше — был плохой опыт.<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Чаще всего плохой опыт — это отсутствие прозрачности и размытая ответственность. У нас: ежедневная таблица с цифрами, еженедельный отчёт, чёткие KPI на старте. Если что-то идёт не так — говорим об этом сразу, не прячем за красивыми слайдами.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Нужно ли давать доступ к своему рекламному кабинету?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Нет. Рекламные кабинеты, бизнес-страницы и все необходимые инструменты — на нашей стороне. Вам нужно только принимать трафик и работать с лидами. Ваш аккаунт остаётся у вас, мы к нему не подключаемся.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Дорого. Почему $500 + 15% от бюджета?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">$500 — фикс за управление командой и процессами. 15% — мотивация масштабировать то, что работает: чем выше ваш бюджет, тем выше отдача и наш доход. При бюджете $5 000 и ROAS ×3 вы зарабатываете $15 000, агентство получает $1 250 — это 8% от вашей выручки.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Работаете ли вы с зарубежными рынками?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Да. Работаем с EN рынком системно: обучающие продукты, трейдинг, инфобизнес. Коучинг / психология: $5К → $20К за 8 дней, доходимость до вебинара 51%. Запуски в обучении: $51К → $113К за месяц, ещё $160К в заказах на момент окончания работы. Трейдинг (EN): открут $800К+, выручка $1.5М+, 89 000 лидов. Понимаем специфику Tier-1 аудитории и зарубежных воронок.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">На какие результаты рассчитывать в первый месяц?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Первый месяц — тестовый: находим рабочие связки под ваш продукт и аудиторию. Первые данные по CPL и ROAS — через 7–14 дней. Стабильный прогнозируемый поток лидов — со второго месяца. KPI фиксируем на старте, не придумываем цифры задним числом.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block" id="contact">
+    <div class="container">
+        <div class="eyebrow">Следующий шаг</div>
+        <h2>Готовы к системному трафику?</h2>
+        <p>Напишите мне в Telegram — обсудим ваш проект, каналы и KPI.</p>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-logo">MetaPR · Вероника Дубоссарская</span>
+            <div class="footer-links">
+                <a href="https://t.me/vdubossarskaya" target="_blank">Telegram</a>
+                <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank">Портфолио</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/vdubossarskaya" target="_blank" class="float-btn" id="floatBtn">Написать →</a>
+
+<script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    const floatBtn = document.getElementById('floatBtn');
+    window.addEventListener('scroll', () => {
+        floatBtn.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+</script>
+<script>
+
+// P2 — Луч прожектора
+(function(){
+  const c=document.getElementById('bg-canvas');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const ctx=c.getContext('2d');
+  let t=0;
+  function animate(){
+    const w=c.width,h=c.height;
+    ctx.clearRect(0,0,w,h);
+    t+=0.006;
+    const cx=w/2+Math.sin(t)*w*0.25;
+    const grad=ctx.createRadialGradient(cx,-20,0,cx,-20,h*1.2);
+    grad.addColorStop(0,'rgba(168,85,247,0.14)');
+    grad.addColorStop(0.35,'rgba(96,165,250,0.05)');
+    grad.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=grad;
+    ctx.fillRect(0,0,w,h);
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+</script>
+<script>
+
+
+
+</script>
+</body>
+</html>
