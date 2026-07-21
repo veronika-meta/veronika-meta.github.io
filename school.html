@@ -138,6 +138,8 @@
         .float-btn:hover { transform: translateY(-2px); }
         .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.78rem; text-decoration: none; margin-bottom: 20px; transition: color 0.15s; }
         .back-link:hover { color: var(--text); }
+        .da-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        @media (max-width: 560px) { .da-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -192,7 +194,7 @@
     <div class="container">
         <div class="eyebrow">Для кого</div>
         <h2>Подходит, если ваш курс<br>включает маркетинг или SMM</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="da-grid">
             <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;">
                 <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">✓ Да</div>
                 <h3 style="font-size:.9rem;font-weight:700;margin-bottom:6px;">Есть модуль по таргету — устарел</h3>
