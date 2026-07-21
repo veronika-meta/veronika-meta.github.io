@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Консультация + сопровождение — Вероника Дубоссарская</title>
+    <meta name="description" content="Первый самостоятельный запуск рекламы — стратегия, запуск вместе, 2,5 недели поддержки. $350.">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0c0c14; --bg2: #13131f; --bg3: #1a1a2e;
+            --card: #16162a; --card2: #1e1e35;
+            --border: rgba(255,255,255,0.07);
+            --text: #f0f0f5; --muted: #888899;
+            --accent: #7c5cbf; --accent2: #a855f7; --accent3: #60a5fa;
+            --green: #34d399; --gold: #f59e0b; --radius: 16px;
+        }
+        html { scroll-behavior: smooth; }
+        html { background: var(--bg); }
+        body { background: transparent; color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(12,12,20,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+        .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+        .nav-logo { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a { padding: 6px 12px; border-radius: 8px; font-size: 13px; color: var(--muted); text-decoration: none; transition: all 0.15s; }
+        .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-btn { padding: 7px 16px; border-radius: 8px; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent2); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+        .nav-btn:hover { background: rgba(168,85,247,0.25); }
+        @media (max-width: 580px) { .nav-links { display: none; } }
+
+        .hero { padding: 90px 0 70px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,92,191,0.2) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 80%, rgba(96,165,250,0.08) 0%, transparent 60%); pointer-events: none; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,92,191,0.15); border: 1px solid rgba(124,92,191,0.3); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--accent2); letter-spacing: 0.05em; margin-bottom: 28px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; background: linear-gradient(135deg, #fff 0%, rgba(168,139,250,0.9) 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; max-width: 680px; }
+        .hero-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: opacity 0.15s; }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.15s; }
+        .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+        .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+        .hstat { text-align: left; }
+        .hstat-n { display: block; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
+        .hstat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+        section { padding: 72px 0; }
+        section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+
+        .aud-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
+        .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
+        .acard { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; transition: border-color 0.2s; }
+        .acard:hover { border-color: rgba(168,85,247,0.25); }
+        .acard.dim { background: var(--bg2); opacity: 0.65; }
+        .acard-mark { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+        .acard.yes .acard-mark { color: var(--green); }
+        .acard.no .acard-mark { color: var(--muted); }
+        .acard h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+        .acard p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* ROADMAP */
+        .roadmap { display: flex; flex-direction: column; gap: 2px; }
+        .rm-item { display: flex; gap: 22px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+        .rm-step { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 24px; padding-top: 2px; }
+        .rm-timing { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .rm-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+        .rm-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* NOTION FOLDER */
+        .notion-card {
+            background: var(--card); border: 1px solid rgba(168,85,247,0.25);
+            border-radius: var(--radius); padding: 28px 30px;
+            display: flex; gap: 24px; align-items: flex-start;
+            margin-top: 16px; position: relative; overflow: hidden;
+        }
+        .notion-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
+        .notion-icon { font-size: 1.8rem; min-width: 36px; }
+        .notion-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+        .notion-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+        .notion-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .ntag { font-size: 11px; font-weight: 600; background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.2); color: var(--accent2); padding: 4px 10px; border-radius: 100px; }
+
+        /* PRICE */
+        .price-card {
+            background: var(--card); border: 1px solid rgba(168,85,247,0.3);
+            border-radius: var(--radius); padding: 36px; position: relative; overflow: hidden;
+            max-width: 500px;
+        }
+        .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+        .price-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+        .price-num { font-size: 3rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px; }
+        .price-note { font-size: 0.75rem; color: var(--muted); margin-bottom: 20px; }
+        .price-for { font-size: 0.83rem; color: #c5c5d5; line-height: 1.7; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+        .plist { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+        .plist li { font-size: 0.8rem; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5; }
+        .plist li::before { content: '—'; position: absolute; left: 0; color: var(--accent2); opacity: 0.5; }
+        .pcta { display: block; text-align: center; padding: 13px 20px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.88rem; background: var(--accent2); color: #fff; transition: opacity 0.15s; }
+        .pcta:hover { opacity: 0.85; }
+
+        /* EXPERT */
+        .expert-grid { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 640px) { .expert-grid { grid-template-columns: 1fr; } }
+        .expert-photo { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; background: var(--card2); border: 1px solid var(--border); }
+        .expert-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .expert-name { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .expert-role { font-size: 0.8rem; color: var(--accent2); font-weight: 600; margin-bottom: 18px; letter-spacing: 0.04em; }
+        .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.85; margin-bottom: 12px; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 2px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-q { width: 100%; background: transparent; border: none; padding: 20px 24px; text-align: left; color: var(--text); font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; transition: color 0.15s; }
+        .faq-q:hover { color: var(--accent2); }
+        .faq-icon { font-size: 1rem; color: var(--muted); transition: transform 0.3s; min-width: 16px; font-weight: 300; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 24px 20px; font-size: 0.84rem; color: var(--muted); line-height: 1.8; border-top: 1px solid var(--border); padding-top: 16px; }
+        .faq-item.open .faq-a { max-height: 300px; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent2); }
+        .faq-item.open .faq-q { color: var(--accent2); }
+        .faq-item.open { border-color: rgba(168,85,247,0.25); }
+
+        .cta-block { text-align: center; padding: 80px 0; }
+        .cta-block h2 { margin-bottom: 12px; }
+        .cta-block p { font-size: 0.92rem; color: var(--muted); max-width: 400px; margin: 0 auto 32px; line-height: 1.8; }
+
+        footer { border-top: 1px solid var(--border); padding: 32px 0; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-logo { font-size: 13px; font-weight: 700; color: var(--accent2); }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+        .footer-links a:hover { color: var(--text); }
+
+        .float-btn { position: fixed; bottom: 24px; right: 24px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.82rem; box-shadow: 0 4px 24px rgba(168,85,247,0.35); opacity: 0; pointer-events: none; z-index: 50; transition: opacity 0.2s, transform 0.2s; }
+        .float-btn.show { opacity: 1; pointer-events: auto; }
+        .float-btn:hover { transform: translateY(-2px); }
+        .inc-list { display: flex; flex-direction: column; gap: 2px; }
+        .inc-item { display: flex; gap: 22px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; transition: border-color 0.2s; }
+        .inc-item:hover { border-color: rgba(168,85,247,0.25); }
+        .inc-num { font-size: 1rem; color: var(--accent2); min-width: 14px; padding-top: 2px; }
+        .inc-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+        .inc-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+        .mcases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .mcases-grid { grid-template-columns: 1fr; } }
+        .mcase { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s; position: relative; overflow: hidden; }
+        .mcase::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); opacity: 0.6; }
+        .mcase:hover { border-color: rgba(168,85,247,0.3); }
+        .mcase-who { font-size: 11px; color: var(--muted); margin-bottom: 10px; display: block; }
+        .mcase-problem { font-size: 0.78rem; color: var(--muted); line-height: 1.7; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .mcase-problem strong { color: var(--text); font-weight: 600; }
+        .mcase-result { font-size: 0.82rem; color: var(--green); font-weight: 600; line-height: 1.6; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.78rem; text-decoration: none; margin-bottom: 20px; transition: color 0.15s; }
+        .back-link:hover { color: var(--text); }
+
+
+        /* CASE SCREENSHOTS */
+        .cfl-screenshots { display: flex; gap: 10px; flex-wrap: nowrap; margin-top: 16px; }
+        @media (max-width: 560px) { .cfl-screenshots { flex-wrap: wrap; } }
+        .cfl-screenshots a { display: block; flex: 1; min-width: 0; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: border-color 0.2s, transform 0.2s; background: var(--bg3); }
+        .cfl-screenshots a:hover { border-color: rgba(168,85,247,0.4); transform: translateY(-2px); }
+        .cfl-screenshots img { width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; }
+
+        /* CASES FULL */
+        .cases-full-list { display: flex; flex-direction: column; gap: 14px; }
+        .cfl-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s; }
+        .cfl-card:hover { border-color: rgba(168,85,247,0.25); }
+        .cfl-top { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); position: relative; }
+        .cfl-top::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
+        .cfl-niche { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+        .cfl-big { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+        .cfl-n { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cfl-sub { font-size: 0.9rem; color: var(--muted); }
+        .cfl-body { padding: 20px 28px 24px; }
+        .cfl-story { font-size: 0.83rem; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+        .cfl-metrics { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 16px; }
+        .cfl-mn { display: block; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 2px; }
+        .cfl-ml { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+        .cfl-quote { font-size: 0.82rem; font-style: italic; color: var(--accent2); padding: 10px 14px; background: rgba(168,85,247,0.06); border-left: 2px solid var(--accent2); border-radius: 0 8px 8px 0; }
+        .cfl-placeholder { font-size: 0.78rem; color: rgba(255,255,255,0.2); border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px; padding: 12px 16px; text-align: center; margin-top: 4px; }
+    </style>
+</head>
+<body>
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;"></canvas>
+
+
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">Вероника · Сопровождение</span>
+        <ul class="nav-links">
+            <li><a href="#included">Состав</a></li>
+            <li><a href="#pricing">Стоимость</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="nav-btn">Написать →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" class="back-link">← Все услуги</a>
+        <div class="hero-tag">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+            Консультация + 2,5 недели сопровождения
+        </div>
+        <h1>Запустите рекламу сами — с поддержкой на каждом шаге</h1>
+        <p class="hero-sub">Для малого бизнеса, которому пока невыгодно нанимать таргетолога. Первый запуск делаем вместе, 2,5 недели я рядом — отвечаю на вопросы, помогаю докрутить. Уходите с рабочей стратегией и пониманием как читать результаты.</p>
+        <div class="hero-actions">
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+            <a href="#included" class="btn-ghost">Что входит</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hstat">
+                <span class="hstat-n">$350</span>
+                <span class="hstat-l">стоимость</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">2 нед</span>
+                <span class="hstat-l">сопровождение</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">3</span>
+                <span class="hstat-l">созвона включено</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">∞</span>
+                <span class="hstat-l">база в Notion навсегда</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="audience">
+    <div class="container">
+        <div class="eyebrow">Для кого</div>
+        <h2>Подойдёт, если хотите<br>разобраться в рекламе сами</h2>
+        <div class="aud-label">Подходит, если</div>
+        <div class="aud-grid">
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Малый бизнес с продуктом и бюджетом</h3>
+                <p>Есть что продавать и $100–150 в месяц на рекламу. Нанять таргетолога пока дорого — этот формат создан именно для этого: получить первые результаты самостоятельно, не сливая бюджет вслепую.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Хотите запуститься сами, но страшно</h3>
+                <p>Первый запуск страшно делать в одиночку — боитесь слить бюджет. Здесь мы делаем его вместе: вы у руля, я рядом и подсказываю на каждом шаге.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Планируете нанять таргетолога</h3>
+                <p>Когда понимаете как работает реклама — умеете ставить задачи, проверять работу и не зависеть от слов специалиста. Это защищает от сливов и непрофессионализма.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Нужна система, а не разовый запуск</h3>
+                <p>Хотите не просто разок попробовать, а понять логику: как выбирать аудитории, читать цифры, принимать решения по рекламе — чтобы делать это самостоятельно потом.</p>
+            </div>
+        </div>
+        <div class="aud-label" style="margin-top:28px;">Не подойдёт, если</div>
+        <div class="aud-grid">
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Хотите передать рекламу специалисту полностью</h3>
+                <p>Если нужен человек который делает всё сам — это другой формат. Здесь реализация на вашей стороне: вы снимаете, запускаете, я помогаю разобраться.</p>
+            </div>
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Нет времени участвовать в процессе</h3>
+                <p>Этот формат требует вашего активного участия: созвоны, самостоятельные действия между ними, переписка. Без этого не будет результата.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INCLUDED -->
+<section id="included" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Состав</div>
+        <h2>Что входит в 2,5 недели</h2>
+        <div class="inc-list">
+            <div class="inc-item">
+                <span class="inc-num">●</span>
+                <div class="inc-body">
+                    <h4>3 созвона по 1.5–2 часа</h4>
+                    <p>Определяем аудиторию и прописываем стратегию под проект. Разбираем как настраивать рекламу в Facebook Ads: цели, техническая сборка. Запускаем рекламу вместе, разбираем на какие показатели смотреть и как оптимизировать.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">●</span>
+                <div class="inc-body">
+                    <h4>3–5 идей для первых креативов</h4>
+                    <p>Реализация на стороне клиента.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">●</span>
+                <div class="inc-body">
+                    <h4>2,5 недели рядом</h4>
+                    <p>Отвечаю на вопросы голосовыми/текстом, помогаю докрутить моменты.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">●</span>
+                <div class="inc-body">
+                    <h4>Финальный созвон</h4>
+                    <p>Смотрим результаты, разбираем что дальше.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="notion-card">
+            <span class="notion-icon">📁</span>
+            <div class="notion-body">
+                <h4>Личная папка в Notion — остаётся у вас навсегда</h4>
+                <p>После работы у вас остаётся база со всем что разобрали: стратегия по проекту, чеклист запуска, шпаргалка по показателям, идеи креативов. Можно вернуться в любой момент — даже через год.</p>
+                <div class="notion-tags">
+                    <span class="ntag">Стратегия</span>
+                    <span class="ntag">Чеклист запуска</span>
+                    <span class="ntag">Шпаргалка по метрикам</span>
+                    <span class="ntag">Идеи креативов</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Стоимость</div>
+        <h2>Один пакет — всё включено</h2>
+        <div class="price-card">
+            <div class="price-label">Консультация + сопровождение</div>
+            <div class="price-num">$350</div>
+            <div class="price-note">Фиксированная стоимость · Рекламный бюджет — отдельно, напрямую в Meta · Старт от $100–150/мес</div>
+            <div class="price-for">2,5 недели работы вместе: стратегия, первый запуск, поддержка в процессе и личная база в Notion которая остаётся у вас навсегда.</div>
+            <ul class="plist">
+                <li>2 рабочих созвона по 1.5–2 часа</li>
+                <li>Финальный созвон по итогам</li>
+                <li>2,5 недели сопровождения в переписке</li>
+                <li>Личная папка в Notion со всеми материалами</li>
+                <li>Запуск рекламы делаем вместе на созвоне</li>
+            </ul>
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="pcta">Написать в Telegram →</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- CASES -->
+<section id="cases" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Результаты клиентов</div>
+        <h2>После консультации</h2>
+        <div class="cases-full-list">
+
+            <div class="cfl-card">
+                <div class="cfl-top">
+                    <div class="cfl-niche">Домашние комплекты · Беларусь</div>
+                    <div class="cfl-big">
+                        <span class="cfl-n">142 000</span>
+                        <span class="cfl-sub">охват · бюджет $346</span>
+                    </div>
+                </div>
+                <div class="cfl-body">
+                    <p class="cfl-story">Пришла с зависшими аккаунтами Meta — старый СММщик не отдавал доступы. За консультацию перепривязали всё и разобрали как запускать рекламу самостоятельно. Дальше — запустила сама: 7 кампаний, реальные заказы, включая пошив под нестандартный размер.</p>
+                    <div class="cfl-metrics">
+                        <div class="cfl-m"><span class="cfl-mn">2 876</span><span class="cfl-ml">переходов на профиль</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$0.06</span><span class="cfl-ml">за переход</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">~79</span><span class="cfl-ml">обращений</span></div>
+                    </div>
+                    <div class="cfl-screenshots">
+                        <a href="case-galya-1.png" target="_blank"><img src="case-galya-1.png" alt="переписка Галя 1" loading="lazy"></a>
+                        <a href="case-galya-2.png" target="_blank"><img src="case-galya-2.png" alt="переписка Галя 2" loading="lazy"></a>
+                        <a href="case-galya-3.png" target="_blank"><img src="case-galya-3.png" alt="переписка Галя 3" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cfl-card">
+                <div class="cfl-top">
+                    <div class="cfl-niche">Женская одежда · первый платный запуск</div>
+                    <div class="cfl-big">
+                        <span class="cfl-n">113</span>
+                        <span class="cfl-sub">обращений за $99</span>
+                    </div>
+                </div>
+                <div class="cfl-body">
+                    <p class="cfl-story">До рекламы — только сарафанное радио. Первый платный запуск привёл покупателей из разных городов Беларуси: Несвиж, Брест, Белоозерск. Люди уточняли размеры, способы доставки и оформляли заказы через директ.</p>
+                    <div class="cfl-metrics">
+                        <div class="cfl-m"><span class="cfl-mn">$0.88</span><span class="cfl-ml">средняя цена обращения</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$0.33</span><span class="cfl-ml">лучшее объявление</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">18 227</span><span class="cfl-ml">охват</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$99</span><span class="cfl-ml">общий бюджет</span></div>
+                    </div>
+                    <div class="cfl-screenshots">
+                        <a href="case-odezhda-1.png" target="_blank"><img src="case-odezhda-1.png" alt="переписка одежда 1" loading="lazy"></a>
+                        <a href="case-odezhda-2.png" target="_blank"><img src="case-odezhda-2.png" alt="переписка одежда 2" loading="lazy"></a>
+                        <a href="case-odezhda-3.png" target="_blank"><img src="case-odezhda-3.png" alt="переписка одежда 3" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cfl-card">
+                <div class="cfl-top">
+                    <div class="cfl-niche">Кондитер, торты на заказ · первый запуск</div>
+                    <div class="cfl-big">
+                        <span class="cfl-n">9</span>
+                        <span class="cfl-sub">обращений за 5 дней</span>
+                    </div>
+                </div>
+                <div class="cfl-body">
+                    <p class="cfl-story">Настройка кабинета, стратегия под нишу, первый запуск — всё за одну сессию. Суточный бюджет $5. Каждое обращение — потенциальный заказ на торт от 50 BYN.</p>
+                    <div class="cfl-metrics">
+                        <div class="cfl-m"><span class="cfl-mn">$1.56</span><span class="cfl-ml">за обращение</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">128</span><span class="cfl-ml">кликов по $0.07</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$15</span><span class="cfl-ml">потрачено</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">5 дней</span><span class="cfl-ml">срок</span></div>
+                    </div>
+                    <div class="cfl-placeholder">[ скрин переписки Маши — добавить позже ]</div>
+                    <div class="cfl-screenshots">
+                        <a href="case-masha-1.png" target="_blank"><img src="case-masha-1.png" alt="переписка Маша" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-top: 32px; text-align: center;">
+            <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank" class="btn-ghost">Все мои кейсы → портфолио</a>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERT -->
+<section id="about" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Кто ведёт</div>
+        <div class="expert-grid">
+            <div class="expert-photo">
+                <img src="photo.jpg" alt="Вероника Дубоссарская">
+            </div>
+            <div>
+                <div class="expert-name">Вероника Дубоссарская</div>
+                <div class="expert-role">Таргетолог · CEO MetaPR · 5 лет в digital</div>
+                <p class="expert-bio">5 лет в Meta Ads. Работала с малым бизнесом, онлайн-школами, инфобизнесом — на русскоязычных и зарубежных рынках. Знаю не только как запустить рекламу технически, но и как выбрать стратегию под конкретный продукт.</p>
+                <p class="expert-bio">В этом формате вы не один на один с кабинетом — я объясняю логику каждого шага, чтобы вы понимали что и зачем делаете, а не просто повторяли действия.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">FAQ</div>
+        <h2>Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">Я не разберусь — никогда не запускал рекламу.<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Разберётесь. Первый запуск делаем вместе на созвоне — вы не один на один с кабинетом. Я объясняю каждый шаг, отвечаю на вопросы в процессе. Многие приходят с нулём опыта и уходят с работающей рекламой.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Лучше сразу нанять таргетолога — зачем тратить время на обучение?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Когда понимаете как работает реклама — умеете поставить задачу, проверить работу и не зависеть от слов специалиста. Это защищает от слива бюджета и непрофессионализма. Одни после этого формата запускают сами и экономят. Другие нанимают таргетолога, но уже с пониманием что проверять.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">$350 — это дорого за 2,5 недели.<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Это 3 созвона, 2,5 недели поддержки и личная база в Notion которая остаётся у вас навсегда. Один неудачный запуск без понимания что делаешь может стоить гораздо дороже — и по бюджету, и по времени.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Что если я не успею всё за 2,5 недели?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Мы договариваемся на старте о темпе. Если по объективным причинам что-то не успели — обсудим индивидуально. Главное что все материалы остаются у вас в Notion и можно продолжать самостоятельно.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block" id="contact">
+    <div class="container">
+        <div class="eyebrow">Следующий шаг</div>
+        <h2>Готовы запустить рекламу сами?</h2>
+        <p>Напишите мне в Telegram — обсудим ваш проект и когда начинаем.</p>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-logo">Вероника Дубоссарская · Сопровождение</span>
+            <div class="footer-links">
+                <a href="https://t.me/vdubossarskaya" target="_blank">Telegram</a>
+                <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank">Портфолио</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/vdubossarskaya" target="_blank" class="float-btn" id="floatBtn">Написать →</a>
+
+<script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    const floatBtn = document.getElementById('floatBtn');
+    window.addEventListener('scroll', () => {
+        floatBtn.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+</script>
+<script>
+
+// P4 — Восходящие линии
+(function(){
+  const c=document.getElementById('bg-canvas');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const ctx=c.getContext('2d');
+  let lines=[];
+  function initLines(){
+    lines=Array.from({length:18},function(){
+      return{x:Math.random()*c.width,y:Math.random()*c.height,speed:0.5+Math.random()*0.7,a:0.08+Math.random()*0.15};
+    });
+  }
+  initLines();
+  window.addEventListener('resize',initLines);
+  function animate(){
+    const w=c.width,h=c.height;
+    ctx.clearRect(0,0,w,h);
+    lines.forEach(function(l){
+      l.y-=l.speed;
+      if(l.y<-80){l.y=h+20;l.x=Math.random()*w;}
+      ctx.strokeStyle='rgba(168,85,247,'+l.a+')';
+      ctx.lineWidth=1;
+      ctx.beginPath();
+      ctx.moveTo(l.x,l.y);
+      ctx.lineTo(l.x+35,l.y-70);
+      ctx.stroke();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+</script>
+</body>
+</html>

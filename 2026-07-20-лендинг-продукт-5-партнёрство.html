@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стратегическое партнёрство — Вероника Дубоссарская</title>
+    <meta name="description" content="Стратег по личному бренду — смыслы, система, трафик. Для экспертов с Instagram которые хотят продавать через блог системно. От $1000/мес.">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0c0c14; --bg2: #13131f; --bg3: #1a1a2e;
+            --card: #16162a; --card2: #1e1e35;
+            --border: rgba(255,255,255,0.07);
+            --text: #f0f0f5; --muted: #888899;
+            --accent: #7c5cbf; --accent2: #a855f7; --accent3: #60a5fa;
+            --green: #34d399; --gold: #f59e0b; --radius: 16px;
+        }
+        html { scroll-behavior: smooth; }
+        html { background: var(--bg); }
+        body { background: transparent; color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(12,12,20,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+        .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+        .nav-logo { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a { padding: 6px 12px; border-radius: 8px; font-size: 13px; color: var(--muted); text-decoration: none; transition: all 0.15s; }
+        .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-btn { padding: 7px 16px; border-radius: 8px; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent2); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+        .nav-btn:hover { background: rgba(168,85,247,0.25); }
+        @media (max-width: 580px) { .nav-links { display: none; } }
+
+        .hero { padding: 90px 0 70px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,92,191,0.2) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 80%, rgba(96,165,250,0.08) 0%, transparent 60%); pointer-events: none; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,92,191,0.15); border: 1px solid rgba(124,92,191,0.3); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--accent2); letter-spacing: 0.05em; margin-bottom: 28px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; background: linear-gradient(135deg, #fff 0%, rgba(168,139,250,0.9) 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; max-width: 700px; }
+        .hero-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: opacity 0.15s; }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.15s; }
+        .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+        .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+        .hstat { text-align: left; }
+        .hstat-n { display: block; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
+        .hstat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+        section { padding: 72px 0; }
+        section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+
+        .aud-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
+        .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
+        .acard { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; transition: border-color 0.2s; }
+        .acard:hover { border-color: rgba(168,85,247,0.25); }
+        .acard.dim { background: var(--bg2); opacity: 0.65; }
+        .acard-mark { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+        .acard.yes .acard-mark { color: var(--green); }
+        .acard.no .acard-mark { color: var(--muted); }
+        .acard h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+        .acard p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* INCLUDED */
+        .inc-list { display: flex; flex-direction: column; gap: 2px; }
+        .inc-item { display: flex; gap: 22px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; transition: border-color 0.2s; }
+        .inc-item:hover { border-color: rgba(168,85,247,0.25); }
+        .inc-num { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 22px; padding-top: 2px; letter-spacing: 0.06em; }
+        .inc-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+        .inc-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* ROADMAP */
+        .roadmap { display: flex; flex-direction: column; gap: 2px; }
+        .rm-item { display: flex; gap: 22px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+        .rm-step { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 24px; padding-top: 2px; }
+        .rm-timing { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .rm-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
+        .rm-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* NOTION */
+        .notion-card { background: var(--card); border: 1px solid rgba(168,85,247,0.25); border-radius: var(--radius); padding: 28px 30px; display: flex; gap: 24px; align-items: flex-start; margin-top: 16px; position: relative; overflow: hidden; }
+        .notion-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
+        .notion-icon { font-size: 1.8rem; min-width: 36px; }
+        .notion-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+        .notion-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+        .notion-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .ntag { font-size: 11px; font-weight: 600; background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.2); color: var(--accent2); padding: 4px 10px; border-radius: 100px; }
+
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 560px) { .pricing-grid { grid-template-columns: 1fr; } }
+        .pcard { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; position: relative; overflow: hidden; }
+        .pcard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0.4; }
+        .pcard.hi { border-color: rgba(168,85,247,0.3); }
+        .pcard.hi::before { opacity: 1; }
+        .pbadge { position: absolute; top: 14px; right: 14px; background: rgba(168,85,247,0.2); border: 1px solid rgba(168,85,247,0.4); color: var(--accent2); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+        .pname { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+        .pprice { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+        .pnote { font-size: 0.75rem; color: var(--muted); margin-bottom: 18px; }
+        .pfor { font-size: 0.83rem; color: #c5c5d5; line-height: 1.7; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+        .plist { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+        .plist li { font-size: 0.8rem; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5; }
+        .plist li::before { content: '—'; position: absolute; left: 0; color: var(--accent2); opacity: 0.5; }
+        .pcta { display: block; text-align: center; padding: 11px 18px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: all 0.15s; }
+        .pcta.primary { background: var(--accent2); color: #fff; }
+        .pcta.primary:hover { opacity: 0.85; }
+        .pcta.ghost { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); }
+        .pcta.ghost:hover { border-color: rgba(255,255,255,0.2); }
+
+        /* EXPERT */
+        .expert-grid { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 640px) { .expert-grid { grid-template-columns: 1fr; } }
+        .expert-photo { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; background: var(--card2); border: 1px solid var(--border); }
+        .expert-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .expert-name { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .expert-role { font-size: 0.8rem; color: var(--accent2); font-weight: 600; margin-bottom: 18px; letter-spacing: 0.04em; }
+        .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.85; margin-bottom: 12px; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 2px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-q { width: 100%; background: transparent; border: none; padding: 20px 24px; text-align: left; color: var(--text); font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; transition: color 0.15s; }
+        .faq-q:hover { color: var(--accent2); }
+        .faq-icon { font-size: 1rem; color: var(--muted); transition: transform 0.3s; min-width: 16px; font-weight: 300; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 24px 20px; font-size: 0.84rem; color: var(--muted); line-height: 1.8; border-top: 1px solid var(--border); padding-top: 16px; }
+        .faq-item.open .faq-a { max-height: 400px; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent2); }
+        .faq-item.open .faq-q { color: var(--accent2); }
+        .faq-item.open { border-color: rgba(168,85,247,0.25); }
+
+        .cta-block { text-align: center; padding: 80px 0; }
+        .cta-block h2 { margin-bottom: 12px; }
+        .cta-block p { font-size: 0.92rem; color: var(--muted); max-width: 400px; margin: 0 auto 32px; line-height: 1.8; }
+
+        footer { border-top: 1px solid var(--border); padding: 32px 0; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-logo { font-size: 13px; font-weight: 700; color: var(--accent2); }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+        .footer-links a:hover { color: var(--text); }
+
+        .float-btn { position: fixed; bottom: 24px; right: 24px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.82rem; box-shadow: 0 4px 24px rgba(168,85,247,0.35); opacity: 0; pointer-events: none; z-index: 50; transition: opacity 0.2s, transform 0.2s; }
+        .float-btn.show { opacity: 1; pointer-events: auto; }
+        .float-btn:hover { transform: translateY(-2px); }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.78rem; text-decoration: none; margin-bottom: 20px; transition: color 0.15s; }
+        .back-link:hover { color: var(--text); }
+    </style>
+</head>
+<body>
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;"></canvas>
+
+
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">Вероника · Стратегическое партнёрство</span>
+        <ul class="nav-links">
+            <li><a href="#included">Состав</a></li>
+            <li><a href="#roadmap">Как работаем</a></li>
+            <li><a href="#pricing">Цены</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="nav-btn">Написать →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" class="back-link">← Все услуги</a>
+        <div class="hero-tag">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+            Личный бренд · Смыслы + Система + Трафик
+        </div>
+        <h1>Стратег по личному бренду — от позиционирования до продаж через блог</h1>
+        <p class="hero-sub">Для экспертов с Instagram которые хотят продавать системно. Распаковка, архитектура аккаунта, воронка, контент и трафик — выстраиваем всё вместе и вдолгую.</p>
+        <div class="hero-actions">
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+            <a href="#included" class="btn-ghost">Что входит</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hstat">
+                <span class="hstat-n">$1000</span>
+                <span class="hstat-l">от / мес</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">3 мес</span>
+                <span class="hstat-l">минимальный срок</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">1×/нед</span>
+                <span class="hstat-l">созвон</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">∞</span>
+                <span class="hstat-l">связь в рабочее время</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="audience">
+    <div class="container">
+        <div class="eyebrow">Для кого</div>
+        <h2>Партнёрство — для тех,<br>кто готов работать вдолгую</h2>
+        <div class="aud-label">Подходит, если</div>
+        <div class="aud-grid">
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Эксперт с продуктом и амбициями</h3>
+                <p>Есть твёрдая экспертность и конкретная услуга или продукт. Хотите монетизировать аудиторию — но пока нет системы как это делать.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Ведёте Instagram, но продажи нестабильны</h3>
+                <p>Контент выходит, аудитория есть, но продажи из блога случайные. Нет чёткого понимания: что публиковать, куда вести подписчика, как выстроить путь к покупке.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Готовы вкладываться в процесс сами</h3>
+                <p>Я веду стратегию и процесс — вы реализуете: снимаете контент, общаетесь с аудиторией, делаете продажи. Это партнёрство, не делегирование.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Хотите понимать свою аудиторию</h3>
+                <p>Цель — не зависеть от меня вечно. Вы уходите с пониманием кто ваш клиент, как с ним говорить и как выстраивать продажи самостоятельно.</p>
+            </div>
+        </div>
+        <div class="aud-label" style="margin-top:28px;">Не подойдёт, если</div>
+        <div class="aud-grid">
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Хотите чтобы всё делали за вас</h3>
+                <p>Контент снимаете и публикуете вы. Без вашего участия система не работает — это не контент-агентство.</p>
+            </div>
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Нет продукта или экспертности</h3>
+                <p>Для выстраивания системы продаж должно быть что продавать.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INCLUDED -->
+<section id="included" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Состав</div>
+        <h2>Что входит в партнёрство</h2>
+        <div class="inc-list">
+            <div class="inc-item">
+                <span class="inc-num">01</span>
+                <div class="inc-body">
+                    <h4>Глубокая распаковка</h4>
+                    <p>Кто вы, кто ваш клиент, что у него болит, как принимает решение, что мешает купить. Это фундамент — без этого любой контент и трафик работают вхолостую.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">02</span>
+                <div class="inc-body">
+                    <h4>Анализ конкурентов</h4>
+                    <p>Что работает на рынке, как отстроиться, какие смыслы уже заняты, а где есть место для вашего позиционирования.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">03</span>
+                <div class="inc-body">
+                    <h4>Архитектура аккаунта</h4>
+                    <p>Структура профиля, хайлайты, логика контента — что должен понять человек, зайдя к вам впервые. Аккаунт как продающий инструмент, а не просто лента.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">04</span>
+                <div class="inc-body">
+                    <h4>Скелеты ключевого контента</h4>
+                    <p>Что снимать, с каким углом, какой смысл, куда ведёт. Вы снимаете и публикуете сами — по готовой системе, а не с чистого листа каждый раз.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">05</span>
+                <div class="inc-body">
+                    <h4>Воронка</h4>
+                    <p>Путь подписчика от первого касания до заявки: лидмагниты, прогревы, точки входа. Контент работает на систему, а не сам по себе.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">06</span>
+                <div class="inc-body">
+                    <h4>Техническая настройка + трафик</h4>
+                    <p>Instagram, Facebook, рекламный кабинет. Настройка и ведение таргета на готовую упаковку — запускаем трафик когда система готова принять его, не раньше.</p>
+                </div>
+            </div>
+            <div class="inc-item">
+                <span class="inc-num">07</span>
+                <div class="inc-body">
+                    <h4>Еженедельный созвон + постоянная связь</h4>
+                    <p>Созвон раз в неделю — разбираем что вышло, корректируем вектор. Постоянная связь в рабочее время: вопросы, разборы, обратная связь на контент.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Как работаем</div>
+        <h2>Путь клиента</h2>
+        <div class="roadmap">
+            <div class="rm-item">
+                <span class="rm-step">01</span>
+                <div class="rm-body">
+                    <div class="rm-timing">Старт · Распаковка</div>
+                    <h4>Анкета, анализ аккаунта и конкурентов</h4>
+                    <p>Определяем точку А и куда идём. Разбираем кто вы, кто ваш клиент и что мешает продажам прямо сейчас.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">02</span>
+                <div class="rm-body">
+                    <div class="rm-timing">1–2 недели · Смыслы и архитектура</div>
+                    <h4>Позиционирование, упаковка, воронка</h4>
+                    <p>Вместе прорабатываем позиционирование, упаковываем профиль, строим воронку. Появляется чёткое понимание что и зачем публиковать.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">03</span>
+                <div class="rm-body">
+                    <div class="rm-timing">Неделя 3–4 · Первый контент</div>
+                    <h4>Снимаем по скелетам, смотрим на реакцию</h4>
+                    <p>Первый контент по системе. Смотрим как аудитория реагирует, докручиваем смыслы и подачу.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">04</span>
+                <div class="rm-body">
+                    <div class="rm-timing">Месяц 2 · Трафик</div>
+                    <h4>Таргет на готовую упаковку</h4>
+                    <p>Запускаем рекламу когда упаковка и контент готовы принять холодный трафик. Тестируем аудитории и офферы.</p>
+                </div>
+            </div>
+            <div class="rm-item">
+                <span class="rm-step">05</span>
+                <div class="rm-body">
+                    <div class="rm-timing">Месяц 3+ · Масштаб</div>
+                    <h4>Усиливаем то что работает</h4>
+                    <p>Что даёт результат — усиливаем и масштабируем.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Стоимость</div>
+        <h2>Два формата сотрудничества</h2>
+        <div class="pricing-grid">
+            <div class="pcard hi">
+                <div class="pbadge">Старт</div>
+                <div class="pname">Пакет на 3 месяца</div>
+                <div class="pprice">$3 000</div>
+                <div class="pnote">≈ $1 000/мес · Рекламный бюджет отдельно</div>
+                <div class="pfor">Фиксированная стоимость на первые 3 месяца. После — переходим на меньший фикс + процент от продаж или обсуждаем индивидуально.</div>
+                <ul class="plist">
+                    <li>Распаковка, смыслы, архитектура аккаунта</li>
+                    <li>Скелеты контента + воронка</li>
+                    <li>Техническая настройка + таргет</li>
+                    <li>Еженедельный созвон</li>
+                    <li>Постоянная связь в рабочее время</li>
+                    <li>Личная папка в Notion</li>
+                </ul>
+                <a href="https://t.me/vdubossarskaya" target="_blank" class="pcta primary">Написать в Telegram →</a>
+            </div>
+            <div class="pcard">
+                <div class="pname">Фикс + % от продаж</div>
+                <div class="pprice" style="font-size:1.5rem;letter-spacing:-0.02em;">Обсуждается</div>
+                <div class="pnote">Индивидуально · Рекламный бюджет отдельно</div>
+                <div class="pfor">Альтернативный формат: фиксированная часть + процент от продаж которые приходят из системы. Обсуждаем на созвоне.</div>
+                <ul class="plist">
+                    <li>Тот же состав работ</li>
+                    <li>Условия зависят от проекта и объёма</li>
+                </ul>
+                <a href="https://t.me/vdubossarskaya" target="_blank" class="pcta ghost">Обсудить →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERT -->
+<section id="about" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Кто ведёт</div>
+        <div class="expert-grid">
+            <div class="expert-photo">
+                <img src="photo.jpg" alt="Вероника Дубоссарская">
+            </div>
+            <div>
+                <div class="expert-name">Вероника Дубоссарская</div>
+                <div class="expert-role">Стратег · Таргетолог · CEO MetaPR</div>
+                <p class="expert-bio">5 лет в digital. Понимаю не только трафик, но и смыслы — как говорить с аудиторией, что её двигает к покупке, как выстроить аккаунт чтобы он продавал. Прошла путь от таргетолога до CEO агентства.</p>
+                <p class="expert-bio">В партнёрстве я отвечаю за стратегию, систему и трафик. Вместе строим то, чем можно гордиться — проект который реально работает и растёт.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">FAQ</div>
+        <h2>Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">Я сама веду Instagram — зачем платить?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Вести аккаунт и продавать через него — разные вещи. Без смыслового ядра и воронки это контент без результата. Вы уже тратите время на блог: снимаете, редактируете, думаете что постить. Без системы это просто контент без денег.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Мне придётся много делать самой?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Да. Я веду процесс — вы реализуете. Именно так рождается настоящий результат: когда эксперт включён в каждый шаг и понимает что и зачем строит. Цель не в том, чтобы вы обходились без меня — цель в том, чтобы вместе сделать что-то сильное.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">А вдруг не сработает?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Работаем итерационно: каждый шаг основан на данных и выводах предыдущего. Еженедельный созвон — чтобы вовремя видеть что работает, а что нужно скорректировать. Это не разовый запуск — это система, которую мы строим вместе.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Почему минимум 3 месяца?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">За первый месяц выстраиваем систему. За второй — запускаем трафик и смотрим первые результаты. За третий — масштабируем что работает. Быстрее не бывает если делать по-настоящему, а не для галочки.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 0 0 48px;">
+    <div class="container" style="text-align:center;">
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank" class="btn-ghost">Все мои кейсы → портфолио</a>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block" id="contact">
+    <div class="container">
+        <div class="eyebrow">Следующий шаг</div>
+        <h2>Хотите выстроить продажи через блог?</h2>
+        <p>Напишите мне в Telegram — обсудим ваш проект и посчитаем математику.</p>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-logo">Вероника Дубоссарская · Стратегическое партнёрство</span>
+            <div class="footer-links">
+                <a href="https://t.me/vdubossarskaya" target="_blank">Telegram</a>
+                <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank">Портфолио</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/vdubossarskaya" target="_blank" class="float-btn" id="floatBtn">Написать →</a>
+
+<script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    const floatBtn = document.getElementById('floatBtn');
+    window.addEventListener('scroll', () => {
+        floatBtn.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+</script>
+<script>
+
+// P5 — Нейросеть (соединённые точки)
+(function(){
+  const c=document.getElementById('bg-canvas');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const ctx=c.getContext('2d');
+  let nodes=[];
+  function initNodes(){
+    nodes=Array.from({length:18},function(){
+      return{x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-0.5)*0.35,vy:(Math.random()-0.5)*0.35};
+    });
+  }
+  initNodes();
+  window.addEventListener('resize',initNodes);
+  function animate(){
+    const w=c.width,h=c.height;
+    ctx.clearRect(0,0,w,h);
+    nodes.forEach(function(n){
+      n.x+=n.vx;n.y+=n.vy;
+      if(n.x<0||n.x>w)n.vx*=-1;
+      if(n.y<0||n.y>h)n.vy*=-1;
+    });
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<160){
+          ctx.strokeStyle='rgba(168,85,247,'+(1-dist/160)*0.25+')';
+          ctx.lineWidth=0.8;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(function(n){
+      ctx.fillStyle='rgba(168,85,247,0.45)';
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,2.5,0,Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+</script>
+</body>
+</html>

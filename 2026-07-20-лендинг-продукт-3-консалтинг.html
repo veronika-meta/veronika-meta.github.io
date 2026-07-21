@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Консультация по рекламе — Вероника Дубоссарская</title>
+    <meta name="description" content="Разовая консультация по рекламе — аудит кабинета, стратегия, разбор связки. 1–2 часа, онлайн или офлайн. $100–150.">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0c0c14;
+            --bg2: #13131f;
+            --bg3: #1a1a2e;
+            --card: #16162a;
+            --card2: #1e1e35;
+            --border: rgba(255,255,255,0.07);
+            --text: #f0f0f5;
+            --muted: #888899;
+            --accent: #7c5cbf;
+            --accent2: #a855f7;
+            --accent3: #60a5fa;
+            --green: #34d399;
+            --gold: #f59e0b;
+            --radius: 16px;
+        }
+
+        html { scroll-behavior: smooth; }
+        html { background: var(--bg); }
+        body { background: transparent; color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(12,12,20,0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); padding: 0 24px;
+        }
+        .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+        .nav-logo { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a { padding: 6px 12px; border-radius: 8px; font-size: 13px; color: var(--muted); text-decoration: none; transition: all 0.15s; }
+        .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-btn { padding: 7px 16px; border-radius: 8px; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent2); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+        .nav-btn:hover { background: rgba(168,85,247,0.25); }
+        @media (max-width: 580px) { .nav-links { display: none; } }
+
+        .hero { padding: 90px 0 70px; position: relative; overflow: hidden; }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,92,191,0.2) 0%, transparent 70%),
+                        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(96,165,250,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,92,191,0.15); border: 1px solid rgba(124,92,191,0.3); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--accent2); letter-spacing: 0.05em; margin-bottom: 28px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; background: linear-gradient(135deg, #fff 0%, rgba(168,139,250,0.9) 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; max-width: 660px; }
+        .hero-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: opacity 0.15s; }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.15s; }
+        .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+        .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+        .hstat { text-align: left; }
+        .hstat-n { display: block; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
+        .hstat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+        section { padding: 72px 0; }
+        section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+
+        .aud-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
+        .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
+        .acard { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; transition: border-color 0.2s; }
+        .acard:hover { border-color: rgba(168,85,247,0.25); }
+        .acard.dim { background: var(--bg2); opacity: 0.65; }
+        .acard-mark { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+        .acard.yes .acard-mark { color: var(--green); }
+        .acard.no .acard-mark { color: var(--muted); }
+        .acard h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+        .acard p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+        /* TOPICS */
+        .topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        @media (max-width: 560px) { .topics-grid { grid-template-columns: 1fr; } }
+        .topic-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px 22px;
+            display: flex; gap: 14px; align-items: flex-start;
+            transition: border-color 0.2s;
+        }
+        .topic-card:hover { border-color: rgba(168,85,247,0.25); }
+        .topic-icon { font-size: 1.1rem; min-width: 22px; margin-top: 1px; }
+        .topic-body h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+        .topic-body p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+        /* FORMAT + PRICE */
+        .format-price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 560px) { .format-price-grid { grid-template-columns: 1fr; } }
+        .fp-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden;
+        }
+        .fp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0.5; }
+        .fp-card.hi { border-color: rgba(168,85,247,0.3); }
+        .fp-card.hi::before { opacity: 1; }
+        .fp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+        .fp-price { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+        .fp-note { font-size: 0.75rem; color: var(--muted); margin-bottom: 16px; }
+        .fp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .fp-list li { font-size: 0.8rem; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5; }
+        .fp-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent2); opacity: 0.5; }
+
+        /* MINI CASES */
+        .mcases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 560px) { .mcases-grid { grid-template-columns: 1fr; } }
+        .mcase {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px;
+            transition: border-color 0.2s; position: relative; overflow: hidden;
+        }
+        .mcase::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); opacity: 0.6; }
+        .mcase:hover { border-color: rgba(168,85,247,0.3); }
+        .mcase-who { font-size: 11px; color: var(--muted); margin-bottom: 10px; display: block; }
+        .mcase-problem { font-size: 0.78rem; color: var(--muted); line-height: 1.7; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .mcase-problem strong { color: var(--text); font-weight: 600; }
+        .mcase-result { font-size: 0.82rem; color: var(--green); font-weight: 600; line-height: 1.6; }
+
+        /* EXPERT */
+        .expert-grid { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+        @media (max-width: 640px) { .expert-grid { grid-template-columns: 1fr; } }
+        .expert-photo { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; background: var(--card2); border: 1px solid var(--border); }
+        .expert-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+        .expert-name { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .expert-role { font-size: 0.8rem; color: var(--accent2); font-weight: 600; margin-bottom: 18px; letter-spacing: 0.04em; }
+        .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.85; margin-bottom: 12px; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 2px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-q { width: 100%; background: transparent; border: none; padding: 20px 24px; text-align: left; color: var(--text); font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; transition: color 0.15s; }
+        .faq-q:hover { color: var(--accent2); }
+        .faq-icon { font-size: 1rem; color: var(--muted); transition: transform 0.3s; min-width: 16px; font-weight: 300; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 24px 20px; font-size: 0.84rem; color: var(--muted); line-height: 1.8; border-top: 1px solid var(--border); padding-top: 16px; }
+        .faq-item.open .faq-a { max-height: 300px; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent2); }
+        .faq-item.open .faq-q { color: var(--accent2); }
+        .faq-item.open { border-color: rgba(168,85,247,0.25); }
+
+        .cta-block { text-align: center; padding: 80px 0; }
+        .cta-block h2 { margin-bottom: 12px; }
+        .cta-block p { font-size: 0.92rem; color: var(--muted); max-width: 380px; margin: 0 auto 32px; line-height: 1.8; }
+
+        footer { border-top: 1px solid var(--border); padding: 32px 0; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-logo { font-size: 13px; font-weight: 700; color: var(--accent2); }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+        .footer-links a:hover { color: var(--text); }
+
+        .float-btn { position: fixed; bottom: 24px; right: 24px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.82rem; box-shadow: 0 4px 24px rgba(168,85,247,0.35); opacity: 0; pointer-events: none; z-index: 50; transition: opacity 0.2s, transform 0.2s; }
+        .float-btn.show { opacity: 1; pointer-events: auto; }
+        .float-btn:hover { transform: translateY(-2px); }
+
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.78rem; text-decoration: none; margin-bottom: 20px; transition: color 0.15s; }
+        .back-link:hover { color: var(--text); }
+
+
+        /* CASE SCREENSHOTS */
+        .cfl-screenshots { display: flex; gap: 10px; flex-wrap: nowrap; margin-top: 16px; }
+        @media (max-width: 560px) { .cfl-screenshots { flex-wrap: wrap; } }
+        .cfl-screenshots a { display: block; flex: 1; min-width: 0; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: border-color 0.2s, transform 0.2s; background: var(--bg3); }
+        .cfl-screenshots a:hover { border-color: rgba(168,85,247,0.4); transform: translateY(-2px); }
+        .cfl-screenshots img { width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; }
+
+        /* CASES FULL */
+        .cases-full-list { display: flex; flex-direction: column; gap: 14px; }
+        .cfl-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s; }
+        .cfl-card:hover { border-color: rgba(168,85,247,0.25); }
+        .cfl-top { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); position: relative; }
+        .cfl-top::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent3)); }
+        .cfl-niche { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+        .cfl-big { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+        .cfl-n { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(135deg, var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cfl-sub { font-size: 0.9rem; color: var(--muted); }
+        .cfl-body { padding: 20px 28px 24px; }
+        .cfl-story { font-size: 0.83rem; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+        .cfl-metrics { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 16px; }
+        .cfl-mn { display: block; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 2px; }
+        .cfl-ml { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+        .cfl-quote { font-size: 0.82rem; font-style: italic; color: var(--accent2); padding: 10px 14px; background: rgba(168,85,247,0.06); border-left: 2px solid var(--accent2); border-radius: 0 8px 8px 0; }
+        .cfl-placeholder { font-size: 0.78rem; color: rgba(255,255,255,0.2); border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px; padding: 12px 16px; text-align: center; margin-top: 4px; }
+    </style>
+</head>
+<body>
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;"></canvas>
+
+
+<nav>
+    <div class="nav-inner">
+        <span class="nav-logo">Вероника · Консалтинг</span>
+        <ul class="nav-links">
+            <li><a href="#topics">Темы</a></li>
+            <li><a href="#pricing">Стоимость</a></li>
+            <li><a href="#cases">Примеры</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="nav-btn">Записаться →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" class="back-link">← Все услуги</a>
+        <div class="hero-tag">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+            Консультация · 1–2 часа · Онлайн / Офлайн
+        </div>
+        <h1>Конкретный ответ по вашей рекламе — без воды, за 1–2 часа</h1>
+        <p class="hero-sub">Для таргетологов, СММщиков и предпринимателей с конкретным вопросом. Разберём что не так, почему не работает и что делать дальше.</p>
+        <div class="hero-actions">
+            <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Записаться →</a>
+            <a href="#topics" class="btn-ghost">Что разбираем</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hstat">
+                <span class="hstat-n">$100</span>
+                <span class="hstat-l">стоимость от</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">1–2 ч</span>
+                <span class="hstat-l">формат</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">5+</span>
+                <span class="hstat-l">лет в Meta Ads</span>
+            </div>
+            <div class="hstat">
+                <span class="hstat-n">RU+EN</span>
+                <span class="hstat-l">рынки</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="audience">
+    <div class="container">
+        <div class="eyebrow">Для кого</div>
+        <h2>Консультация подойдёт,<br>если есть конкретный вопрос</h2>
+        <div class="aud-label">Подходит, если</div>
+        <div class="aud-grid">
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Таргетолог или СММщик</h3>
+                <p>Нужен взгляд со стороны на связку, кабинет или стратегию. Хотите сверить своё понимание с практиком у которого есть реальные результаты в нише.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Предприниматель с вопросом по рекламе</h3>
+                <p>Реклама есть, но что-то не работает. Или хотите запустить сами и нужно понять с чего начать и как не слить бюджет на старте.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Нужна экспертиза по нише</h3>
+                <p>Есть проект в нише где у меня есть кейсы — онлайн-школы, инфобизнес, Beauty, B2B, EN рынок. Хотите конкретные рекомендации, а не общие слова.</p>
+            </div>
+            <div class="acard yes">
+                <div class="acard-mark">✓ Да</div>
+                <h3>Хаос в кабинете или технические блокировки</h3>
+                <p>Аккаунты, пиксели, доступы — что-то зависло или настроено неправильно. За одну сессию разберём и приведём в порядок.</p>
+            </div>
+        </div>
+        <div class="aud-label" style="margin-top:28px;">Не подойдёт, если</div>
+        <div class="aud-grid">
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Нужно постоянное ведение рекламы</h3>
+                <p>Если нужен специалист на регулярной основе — это другой формат работы.</p>
+            </div>
+            <div class="acard no dim">
+                <div class="acard-mark">× Нет</div>
+                <h3>Нет конкретного вопроса</h3>
+                <p>Консультация работает эффективно когда есть чёткий запрос. «Расскажите про рекламу вообще» — не наш формат.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Что разбираем</div>
+        
+        <ul class="topics-list">
+            <li>Аудит рекламного кабинета</li>
+            <li>Стратегия по трафику</li>
+            <li>Разбор связки, которая не работает</li>
+            <li>Техническая настройка кабинета — подготовка к запуску, чтобы потом настраивать самостоятельно</li>
+            <li>Точечный вопрос по нише: стратегия, упаковка, что работает в конкретных нишах</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- FORMAT + PRICE -->
+<section id="pricing" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Формат и стоимость</div>
+        <h2>Как проходит консультация</h2>
+        <div class="format-price-grid">
+            <div class="fp-card">
+                <div class="fp-label">Формат</div>
+                <div class="fp-price" style="font-size:1.4rem;letter-spacing:-0.01em;line-height:1.3;margin-bottom:8px;">Онлайн или офлайн</div>
+                <div class="fp-note">В зависимости от вашего гео</div>
+                <ul class="fp-list">
+                    <li>Созвон в Zoom / Google Meet</li>
+                    <li>Офлайн-встреча, если вы в одном городе</li>
+                    <li>Длительность — 1–2 часа в зависимости от задачи</li>
+                    <li>Запись созвона — обязательно отправляю после</li>
+                    <li>Если нужен аудит кабинета — доступ присылаете заранее, до созвона</li>
+                </ul>
+            </div>
+            <div class="fp-card hi">
+                <div class="fp-label">Стоимость</div>
+                <div class="fp-price">$100–150</div>
+                <div class="fp-note">В зависимости от сложности и длительности</div>
+                <ul class="fp-list">
+                    <li>$100 — конкретный точечный вопрос, до 1 часа</li>
+                    <li>$150 — глубокий разбор: аудит кабинета, стратегия, нишевой консалтинг</li>
+                    <li>Оплата до начала консультации</li>
+                    <li>Короткое summary по итогам — по договорённости</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CASES -->
+<section id="cases" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Результаты клиентов</div>
+        <h2>После консультации</h2>
+        <div class="cases-full-list">
+
+            <div class="cfl-card">
+                <div class="cfl-top">
+                    <div class="cfl-niche">Домашние комплекты · Беларусь</div>
+                    <div class="cfl-big">
+                        <span class="cfl-n">142 000</span>
+                        <span class="cfl-sub">охват · бюджет $346</span>
+                    </div>
+                </div>
+                <div class="cfl-body">
+                    <p class="cfl-story">Пришла с зависшими аккаунтами Meta — старый СММщик не отдавал доступы. За консультацию перепривязали всё и разобрали как запускать рекламу самостоятельно. Дальше — запустила сама: 7 кампаний, реальные заказы, включая пошив под нестандартный размер.</p>
+                    <div class="cfl-metrics">
+                        <div class="cfl-m"><span class="cfl-mn">2 876</span><span class="cfl-ml">переходов на профиль</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$0.06</span><span class="cfl-ml">за переход</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">~79</span><span class="cfl-ml">обращений</span></div>
+                    </div>
+                    <div class="cfl-screenshots">
+                        <a href="case-galya-1.png" target="_blank"><img src="case-galya-1.png" alt="переписка Галя 1" loading="lazy"></a>
+                        <a href="case-galya-2.png" target="_blank"><img src="case-galya-2.png" alt="переписка Галя 2" loading="lazy"></a>
+                        <a href="case-galya-3.png" target="_blank"><img src="case-galya-3.png" alt="переписка Галя 3" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cfl-card">
+                <div class="cfl-top">
+                    <div class="cfl-niche">Женская одежда · первый платный запуск</div>
+                    <div class="cfl-big">
+                        <span class="cfl-n">113</span>
+                        <span class="cfl-sub">обращений за $99</span>
+                    </div>
+                </div>
+                <div class="cfl-body">
+                    <p class="cfl-story">До рекламы — только сарафанное радио. Первый платный запуск привёл покупателей из разных городов Беларуси: Несвиж, Брест, Белоозерск. Люди уточняли размеры, способы доставки и оформляли заказы через директ.</p>
+                    <div class="cfl-metrics">
+                        <div class="cfl-m"><span class="cfl-mn">$0.88</span><span class="cfl-ml">средняя цена обращения</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$0.33</span><span class="cfl-ml">лучшее объявление</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">18 227</span><span class="cfl-ml">охват</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$99</span><span class="cfl-ml">общий бюджет</span></div>
+                    </div>
+                    <div class="cfl-screenshots">
+                        <a href="case-odezhda-1.png" target="_blank"><img src="case-odezhda-1.png" alt="переписка одежда 1" loading="lazy"></a>
+                        <a href="case-odezhda-2.png" target="_blank"><img src="case-odezhda-2.png" alt="переписка одежда 2" loading="lazy"></a>
+                        <a href="case-odezhda-3.png" target="_blank"><img src="case-odezhda-3.png" alt="переписка одежда 3" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cfl-card">
+                <div class="cfl-top">
+                    <div class="cfl-niche">Кондитер, торты на заказ · первый запуск</div>
+                    <div class="cfl-big">
+                        <span class="cfl-n">9</span>
+                        <span class="cfl-sub">обращений за 5 дней</span>
+                    </div>
+                </div>
+                <div class="cfl-body">
+                    <p class="cfl-story">Настройка кабинета, стратегия под нишу, первый запуск — всё за одну сессию. Суточный бюджет $5. Каждое обращение — потенциальный заказ на торт от 50 BYN.</p>
+                    <div class="cfl-metrics">
+                        <div class="cfl-m"><span class="cfl-mn">$1.56</span><span class="cfl-ml">за обращение</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">128</span><span class="cfl-ml">кликов по $0.07</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">$15</span><span class="cfl-ml">потрачено</span></div>
+                        <div class="cfl-m"><span class="cfl-mn">5 дней</span><span class="cfl-ml">срок</span></div>
+                    </div>
+                    <div class="cfl-placeholder">[ скрин переписки Маши — добавить позже ]</div>
+                    <div class="cfl-screenshots">
+                        <a href="case-masha-1.png" target="_blank"><img src="case-masha-1.png" alt="переписка Маша" loading="lazy"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-top: 32px; text-align: center;">
+            <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank" class="btn-ghost">Все мои кейсы → портфолио</a>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERT -->
+<section id="about" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">Кто проводит</div>
+        <div class="expert-grid">
+            <div class="expert-photo">
+                <img src="photo.jpg" alt="Вероника Дубоссарская — консультация по рекламе">
+            </div>
+            <div>
+                <div class="expert-name">Вероника Дубоссарская</div>
+                <div class="expert-role">Таргетолог · CEO MetaPR · 5 лет в digital</div>
+                <p class="expert-bio">5 лет в Meta Ads — работала с онлайн-школами, инфобизнесом, Beauty, B2B, EN рынком. Прошла путь от таргетолога до CEO агентства MetaPR. Знаю не только как настроить рекламу, но и как она влияет на воронку и продажи целиком.</p>
+                <p class="expert-bio">На консультации не даю общие советы из учебника — разбираю ваш конкретный кейс с позиции человека, который видел сотни разных ситуаций.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0;">
+    <div class="container">
+        <div class="eyebrow">FAQ</div>
+        <h2>Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">Не уверена, что за час успеем разобрать всё.<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Если вопрос чёткий — успеем. Напишите мне заранее что хотите разобрать — я оценю объём и скажу сколько времени нужно. Если задача большая, договоримся на 2 часа или разобьём на два созвона.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Это дорого за один час.<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">$100–150 — это цена за ответ, который сэкономит недели тестов и слитый бюджет. Один неправильный запуск на $500 дороже любой консультации. Вы уходите с конкретным пониманием что делать — не с теорией.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Как подготовиться к консультации?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Сформулируйте вопрос максимально конкретно — что хотите разобрать, какой результат ожидаете получить. Если нужен аудит кабинета — пришлите доступ заранее. Чем конкретнее запрос, тем больше успеем за сессию.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">У меня сразу несколько вопросов — можно?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Можно. Пришлите список до созвона — расставим приоритеты и разберём самое важное в отведённое время. Если вопросов много и они разные по теме, лучше сразу планировать 2 часа.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">Вы не знаете мою нишу — как сможете помочь?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><div class="faq-a-inner">Есть ниши где у меня есть прямой опыт: онлайн-школы, инфобизнес, Beauty, B2B, EN рынок. В остальных нишах — разбираем логику трафика, воронку и технику, которые работают независимо от ниши. Уточните свою нишу в сообщении — скажу честно, смогу ли быть максимально полезной.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block" id="contact">
+    <div class="container">
+        <div class="eyebrow">Записаться</div>
+        <h2>Есть конкретный вопрос?</h2>
+        <p>Напишите мне в Telegram — опишите задачу, договоримся на удобное время.</p>
+        <a href="https://t.me/vdubossarskaya" target="_blank" class="btn-primary">Написать в Telegram →</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-logo">Вероника Дубоссарская · Консалтинг</span>
+            <div class="footer-links">
+                <a href="https://t.me/vdubossarskaya" target="_blank">Telegram</a>
+                <a href="https://veronkuligina98-ctrl.github.io/my-porfolio/" target="_blank">Портфолио</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/vdubossarskaya" target="_blank" class="float-btn" id="floatBtn">Записаться →</a>
+
+<script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    const floatBtn = document.getElementById('floatBtn');
+    window.addEventListener('scroll', () => {
+        floatBtn.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+</script>
+<script>
+
+// P3 — Пульсирующий орб
+(function(){
+  const c=document.getElementById('bg-canvas');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const ctx=c.getContext('2d');
+  let t=0;
+  function animate(){
+    const w=c.width,h=c.height;
+    ctx.clearRect(0,0,w,h);
+    t+=0.022;
+    const r=Math.min(w,h)*0.22+Math.sin(t)*20;
+    const a=0.10+Math.sin(t)*0.04;
+    const ox=w*0.15,oy=h*0.3;
+    const grad=ctx.createRadialGradient(ox,oy,0,ox,oy,r);
+    grad.addColorStop(0,'rgba(168,85,247,'+(a+0.08)+')');
+    grad.addColorStop(0.5,'rgba(168,85,247,'+a+')');
+    grad.addColorStop(1,'rgba(168,85,247,0)');
+    ctx.fillStyle=grad;
+    ctx.beginPath();
+    ctx.arc(ox,oy,r,0,Math.PI*2);
+    ctx.fill();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+</script>
+</body>
+</html>
