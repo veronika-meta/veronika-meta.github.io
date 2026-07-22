@@ -35,7 +35,7 @@
         .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(139,107,181,0.15); border: 1px solid rgba(139,107,181,0.3); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--accent2); letter-spacing: 0.05em; margin-bottom: 28px; }
         .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; background: linear-gradient(135deg, #fff 0%, rgba(168,139,250,0.9) 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; max-width: 700px; }
         .hero-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.8; margin-bottom: 36px; }
-        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+        .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 64px; }
         .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--accent2); color: #fff; padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: opacity 0.15s; }
         .btn-primary:hover { opacity: 0.85; }
         .btn-ghost { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); padding: 11px 22px; border-radius: 9px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.15s; }
@@ -52,7 +52,7 @@
         section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
 
         .aud-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
-        .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
         @media (max-width: 560px) { .aud-grid { grid-template-columns: 1fr; } }
         .acard { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; transition: border-color 0.2s; }
         .acard:hover { border-color: rgba(176,127,208,0.25); }
@@ -64,7 +64,7 @@
         .acard p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
 
         /* INCLUDED */
-        .inc-list { display: flex; flex-direction: column; gap: 2px; }
+        .inc-list { display: flex; flex-direction: column; gap: 18px; }
         .inc-item { display: flex; gap: 22px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; transition: border-color 0.2s; }
         .inc-item:hover { border-color: rgba(176,127,208,0.25); }
         .inc-num { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 22px; padding-top: 2px; letter-spacing: 0.06em; }
@@ -72,7 +72,7 @@
         .inc-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
 
         /* ROADMAP */
-        .roadmap { display: flex; flex-direction: column; gap: 2px; }
+        .roadmap { display: flex; flex-direction: column; gap: 18px; }
         .rm-item { display: flex; gap: 22px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
         .rm-step { font-size: 11px; font-weight: 800; color: var(--accent2); min-width: 24px; padding-top: 2px; }
         .rm-timing { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
@@ -100,7 +100,7 @@
         .pprice { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
         .pnote { font-size: 0.75rem; color: var(--muted); margin-bottom: 18px; }
         .pfor { font-size: 0.83rem; color: #c5c5d5; line-height: 1.7; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-        .plist { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+        .plist { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
         .plist li { font-size: 0.8rem; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5; }
         .plist li::before { content: '—'; position: absolute; left: 0; color: var(--accent2); opacity: 0.5; }
         .pcta { display: block; text-align: center; padding: 11px 18px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: all 0.15s; }
@@ -119,7 +119,7 @@
         .expert-bio { font-size: 0.85rem; color: var(--muted); line-height: 1.85; margin-bottom: 12px; }
 
         /* FAQ */
-        .faq-list { display: flex; flex-direction: column; gap: 2px; }
+        .faq-list { display: flex; flex-direction: column; gap: 18px; }
         .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
         .faq-q { width: 100%; background: transparent; border: none; padding: 20px 24px; text-align: left; color: var(--text); font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; transition: color 0.15s; }
         .faq-q:hover { color: var(--accent2); }
@@ -136,7 +136,7 @@
         .cta-block p { font-size: 0.92rem; color: var(--muted); max-width: 400px; margin: 0 auto 32px; line-height: 1.8; }
 
         footer { border-top: 1px solid var(--border); padding: 32px 0; }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
         .footer-logo { font-size: 13px; font-weight: 700; color: var(--accent2); }
         .footer-links { display: flex; gap: 20px; }
         .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.15s; }
