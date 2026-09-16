@@ -1,0 +1,716 @@
+<title>Лендинг MetaPR</title>
+<style>
+  :root{
+    --bg:#0a0d16;
+    --surface:#10141f;
+    --surface-2:#141a29;
+    --surface-3:#1a2133;
+    --border:#242c42;
+    --border-soft:#181e2c;
+    --text:#eef0f5;
+    --text-muted:#8d95ab;
+    --text-faint:#575e74;
+    --accent:#4361d8;
+    --accent-strong:#8098e6;
+    --accent-tint:rgba(67,97,216,0.16);
+    --positive:#a9aed6;
+    --negative:#c98a92;
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:20px;
+    --shadow-card:0 1px 0 rgba(255,255,255,0.03) inset, 0 12px 30px -18px rgba(0,0,0,0.6);
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{background:var(--bg);color:var(--text);font-family:"Inter",-apple-system,"Segoe UI",sans-serif;margin:0;padding:0 20px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}}
+  .wrap{max-width:1080px;margin:0 auto;}
+  .wrap-narrow{max-width:720px;margin:0 auto;}
+  h1,h2,h3{font-weight:800;letter-spacing:-0.02em;text-wrap:balance;margin:0;}
+  h2{font-size:clamp(26px,3.6vw,34px);}
+  h3{font-size:18px;}
+  p{margin:0;}
+  a{color:inherit;}
+  .num{font-variant-numeric:tabular-nums;}
+  .center{text-align:center;}
+
+  header.site{position:sticky;top:0;z-index:40;background:rgba(10,13,22,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft);padding:0 20px;}
+  .site-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px;}
+  .brand .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(155deg,var(--accent),#233a91);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#eef0f5;}
+
+  .btn{display:inline-flex;align-items:center;gap:7px;justify-content:center;font-family:inherit;font-weight:700;font-size:14.5px;border-radius:9px;border:1px solid transparent;padding:11px 20px;cursor:pointer;text-decoration:none;transition:transform .15s ease, background .15s ease, border-color .15s ease;white-space:nowrap;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent);color:#f4f6fb;}
+  .btn-primary:hover{background:var(--accent-strong);}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--border);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-strong);}
+  .btn-lg{padding:15px 26px;font-size:16px;}
+  .btn-sm{padding:8px 14px;font-size:13.5px;}
+  .btn:disabled{opacity:0.4;cursor:not-allowed;}
+  .btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible{outline:2px solid var(--accent-strong); outline-offset:2px;}
+  .cta-inline{display:flex;justify-content:center;margin-top:40px;}
+
+  /* hero */
+  .hero{padding:56px 0 0;text-align:center;}
+  .hero h1{font-size:clamp(30px,5vw,48px);line-height:1.15;max-width:880px;margin:0 auto;}
+  .hero-ctas{margin:28px 0 0;}
+
+  .slider{margin-top:48px;display:flex;gap:16px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x proximity;}
+  .slider::-webkit-scrollbar{height:6px;}
+  .slider::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+  .slide{scroll-snap-align:start;flex:0 0 240px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;text-align:left;}
+  .slide{flex:0 0 240px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px;text-align:left;}
+  .slide .ptag{display:inline-block;font-size:10px;color:var(--accent-strong);background:rgba(67,97,216,.14);border:1px solid rgba(67,97,216,.35);padding:4px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:10px;}
+  .slide .pframe{border:1.5px solid var(--accent);border-radius:10px;padding:5px;margin-bottom:12px;}
+  .slide .pframe .pphoto{aspect-ratio:3/4;border-radius:6px;background-size:cover;background-position:center;}
+  .slide h3{font-size:14px;font-weight:700;line-height:1.35;min-height:38px;margin:0 0 10px;}
+  .slide .prow{padding:7px 0;border-top:1px solid var(--border-soft);font-size:12px;color:var(--text-muted);}
+  .slide .prow .l{display:block;margin-bottom:3px;}
+  .slide .prow .v{font-weight:800;font-size:14px;color:var(--text);}
+  .slide .prow .v.up{color:var(--positive);}
+
+  .trust-line{margin-top:52px;text-align:center;color:var(--text-faint);font-size:13.5px;}
+  .trust-line b{color:var(--text-muted);}
+  .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--radius-md);overflow:hidden;margin-top:18px;}
+  .stat-strip .cell{background:var(--surface);padding:20px 16px;text-align:center;}
+  .stat-strip .cell .v{font-size:23px;font-weight:800;}
+  .stat-strip .cell .l{font-size:11.5px;color:var(--text-faint);margin-top:4px;}
+
+  section{padding:64px 0;border-top:1px solid var(--border-soft);}
+  section.hero{border-top:none;padding-top:60px;}
+  .section-head{max-width:620px;margin:0 auto 36px;text-align:center;}
+  .section-head p{color:var(--text-muted);margin-top:10px;font-size:15px;}
+
+  .position h2{max-width:760px;margin:0 auto;}
+  .position p{color:var(--text-muted);margin-top:14px;font-size:15.5px;max-width:60ch;margin-left:auto;margin-right:auto;}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .svc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;}
+  .svc-card h3{font-size:16px;}
+  .svc-card p{color:var(--text-muted);font-size:13.5px;margin-top:8px;}
+
+  .qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;}
+  .qual-col .col-label{font-size:12.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:12px;}
+  .qual-col.yes .col-label{color:var(--positive);}
+  .qual-col.no .col-label{color:var(--negative);}
+  .qual-item{border:1px solid var(--border);background:var(--surface);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px;font-size:14px;}
+  .qual-item b{display:block;margin-bottom:3px;}
+  .qual-col.yes .qual-item b{color:var(--positive);}
+  .qual-col.no .qual-item b{color:var(--negative);}
+  .qual-item span{color:var(--text-muted);font-size:13px;}
+
+  .process{display:flex;flex-direction:column;}
+  .p-step{display:grid;grid-template-columns:44px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--border-soft);text-align:left;}
+  .p-step:first-child{border-top:none;}
+  .p-step .idx{font-weight:800;color:var(--accent-strong);font-size:14px;}
+  .p-step h3, .gm-panel-item h3{font-size:16px;}
+  .p-step p, .gm-panel-item p{color:var(--text-muted);font-size:14px;margin-top:4px;max-width:60ch;}
+  .p-step p.lead, .gm-panel-item p.lead{color:var(--text);font-weight:700;max-width:56ch;}
+  .p-step .p-checklist, .gm-panel-item .p-checklist{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;max-width:56ch;}
+  .p-step .p-checklist li, .gm-panel-item .p-checklist li{font-size:13.5px;color:var(--text-muted);padding-left:22px;position:relative;}
+  .p-step .p-checklist li::before, .gm-panel-item .p-checklist li::before{content:"✓";position:absolute;left:0;top:0;color:var(--positive);font-weight:700;}
+
+  /* game-map: игровая карта-путь для блока "Как мы достигаем результата" */
+  .game-map{margin-top:8px;}
+  .gm-nodes{position:relative;display:flex;justify-content:space-between;gap:4px;margin-bottom:36px;padding:0 4px;}
+  .gm-nodes::before{content:"";position:absolute;top:23px;left:calc(4% + 4px);right:calc(4% + 4px);height:2px;background:var(--border-soft);z-index:0;}
+  .gm-fill{content:"";position:absolute;top:23px;left:calc(4% + 4px);height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-strong));z-index:1;transition:width .45s ease;width:0%;}
+  .gm-node{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;flex:1;padding:0;font-family:inherit;}
+  .gm-node .gm-circle{width:46px;height:46px;border-radius:50%;background:var(--surface);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--text-muted);transition:all .25s ease;}
+  .gm-node .gm-label{font-size:11.5px;color:var(--text-faint);max-width:96px;text-align:center;line-height:1.3;transition:color .2s ease;}
+  .gm-node:hover .gm-circle{border-color:var(--accent-strong);}
+  .gm-node.done .gm-circle{border-color:var(--positive);color:var(--positive);}
+  .gm-node.active .gm-circle{background:var(--accent);border-color:var(--accent);color:#f4f6fb;box-shadow:0 0 0 6px var(--accent-tint);transform:scale(1.08);}
+  .gm-node.active .gm-label{color:var(--text);font-weight:700;}
+  .gm-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px;text-align:left;box-shadow:var(--shadow-card);}
+  .gm-panel-item{display:none;}
+  .gm-panel-item.active{display:block;animation:gmFade .3s ease;}
+  .gm-panel-item .idx{font-size:12px;font-weight:800;color:var(--accent-strong);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;display:block;}
+  @keyframes gmFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  @media (max-width:640px){
+    .gm-nodes::before, .gm-fill{display:none;}
+    .gm-nodes{flex-wrap:wrap;justify-content:flex-start;gap:16px 10px;}
+    .gm-node{flex:0 0 calc(33.333% - 8px);}
+    .gm-node .gm-circle{width:38px;height:38px;font-size:14px;}
+    .gm-node .gm-label{font-size:10.5px;max-width:none;}
+    .gm-panel{padding:22px 18px;}
+  }
+
+  .bignum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .bignum-card{background:linear-gradient(165deg,var(--surface-2),var(--surface));border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;text-align:left;}
+  .bignum-card .tag{font-size:10.5px;color:var(--text-faint);font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+  .bignum-card .flow{font-size:18px;font-weight:800;margin-top:4px;}
+  .bignum-card .flow .arrow{color:var(--text-faint);margin:0 3px;font-weight:500;}
+  .bignum-card .flow .to{color:var(--positive);}
+  .bignum-card .headline{font-size:13.5px;color:var(--accent-strong);font-weight:700;margin-top:6px;}
+
+  .case-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;}
+  .case-grid::-webkit-scrollbar{height:6px;}
+  .case-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+  .case-card{scroll-snap-align:center;flex:0 0 100%;max-width:420px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;text-align:left;}
+  .case-card .eyebrow{font-size:12.5px;color:var(--text-faint);margin-bottom:8px;}
+  .case-card h3{font-size:19px;margin:0 0 16px;color:var(--text);}
+  .case-shot{border-radius:14px;overflow:hidden;margin-bottom:18px;box-shadow:0 10px 26px rgba(0,0,0,.3);}
+  .case-shot img{display:block;width:100%;height:auto;}
+  .case-stats{border-top:1px solid var(--border-soft);}
+  .case-stats .srow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px;color:var(--text-muted);}
+  .case-stats .srow .v{font-weight:700;color:var(--text);}
+  .case-stats .srow .v.up{color:var(--positive);}
+
+  .testi-grid{display:flex;align-items:flex-start;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;max-width:920px;margin:0 auto;}
+  .testi-grid::-webkit-scrollbar{height:6px;}
+  .testi-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+  .testi-shot{flex:0 0 260px;width:260px;display:flex;flex-direction:column;gap:6px;scroll-snap-align:center;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.07);box-shadow:0 24px 48px -12px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.03);}
+  .testi-shot img{display:block;width:100%;height:auto;border-radius:10px;}
+
+  .cmp-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-md);}
+  table.cmp{width:100%;border-collapse:collapse;min-width:520px;background:var(--surface);}
+  table.cmp th, table.cmp td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--border-soft);font-size:13.5px;}
+  table.cmp th{font-size:12px;text-transform:uppercase;letter-spacing:0.03em;color:var(--text-faint);font-weight:700;background:var(--surface-2);}
+  table.cmp th.hl, table.cmp td.hl{background:var(--accent-tint);}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp td.crit{color:var(--text-muted);}
+  .mk{font-weight:800;display:inline-flex;align-items:center;gap:6px;}
+  .mk .ic{font-size:12px;flex:none;}
+  .mk.y{color:var(--positive);}
+  .mk.n{color:var(--negative);}
+  table.cmp tr.cmp-sentence-row td{background:var(--surface-2);color:var(--text-faint);font-size:12.5px;padding:9px 15px;border-bottom:1px solid var(--border-soft);}
+
+  .stake p{color:var(--text-muted);font-size:15px;max-width:64ch;margin:14px auto 0;}
+  .stake-list{list-style:none;margin:24px auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:680px;}
+  .stake-list li{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:11px 20px;font-size:14.5px;color:var(--text);box-shadow:var(--shadow-card);}
+  .stake-list li::before{content:"✓";color:var(--positive);font-weight:800;flex:none;}
+  .stake-list b{color:var(--text);font-weight:700;}
+
+  .final-cta h2{font-size:clamp(24px,4vw,32px);}
+  .final-cta p{color:var(--text-muted);margin-top:12px;max-width:58ch;margin-left:auto;margin-right:auto;}
+  .disqualify-box{margin:20px auto 0;max-width:520px;text-align:left;border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;background:var(--surface-2);}
+  .disqualify-box .row{display:flex;gap:9px;font-size:13.5px;color:var(--text-muted);margin-top:7px;}
+  .disqualify-box .row:first-child{margin-top:0;}
+  .disqualify-box .row .ico{color:var(--negative);flex:none;}
+  .disqualify-box .row.pos .ico{color:var(--positive);}
+  .disqualify-box .divider{height:1px;background:var(--border-soft);margin:10px 0;}
+
+  details.faq{border-bottom:1px solid var(--border-soft);padding:16px 0;text-align:left;}
+  details.faq:first-child{border-top:1px solid var(--border-soft);}
+  details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:15px;align-items:center;}
+  details.faq summary::-webkit-details-marker{display:none;}
+  details.faq summary .plus{color:var(--accent-strong);font-size:19px;font-weight:400;flex:none;transition:transform .15s ease;}
+  details.faq[open] summary .plus{transform:rotate(45deg);}
+  details.faq .a{color:var(--text-muted);font-size:14px;margin-top:10px;max-width:68ch;}
+  details.faq .a a{color:var(--accent-strong);font-weight:700;text-decoration:underline;}
+
+  .apply-shell{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow-card);text-align:left;}
+  .apply-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+  .steps-dots{display:flex;gap:7px;}
+  .steps-dots i{width:22px;height:4px;border-radius:2px;background:var(--border);display:block;transition:background .2s ease;}
+  .steps-dots i.on{background:var(--accent);}
+  .steps-dots i.done{background:var(--accent-strong);}
+  .step-skip{font-size:13px;color:var(--text-faint);text-decoration:underline;}
+  .step-skip:hover{color:var(--accent-strong);}
+  .step{display:none;}
+  .step.active{display:block;animation:fadein .25s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .step h3{font-size:19px;margin-bottom:6px;}
+  .step .hint{color:var(--text-muted);font-size:13.5px;margin-bottom:18px;}
+  .opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .opt{border:1px solid var(--border);background:var(--surface-2);border-radius:var(--radius-sm);padding:14px 16px;cursor:pointer;font-size:14px;font-weight:600;text-align:left;transition:border-color .15s ease, background .15s ease;color:var(--text);}
+  .opt:hover{border-color:var(--accent);}
+  .opt.sel{border-color:var(--accent);background:var(--accent-tint);color:var(--accent-strong);}
+  textarea, input[type=text]{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:inherit;font-size:14px;padding:12px 14px;resize:vertical;}
+  textarea:focus, input[type=text]:focus{border-color:var(--accent);outline:none;}
+  label.field-label{display:block;font-size:12.5px;color:var(--text-muted);margin-bottom:7px;font-weight:600;}
+  .field{margin-bottom:14px;}
+  .disclosure{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;font-size:13.5px;color:var(--text-muted);margin-bottom:16px;line-height:1.5;}
+  .disclosure b{color:var(--text);}
+  .step-actions{display:flex;justify-content:space-between;gap:12px;margin-top:22px;}
+  .summary-box{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:14px;}
+  .summary-box .row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--border-soft);font-size:13px;}
+  .summary-box .row:last-child{border-bottom:none;}
+  .summary-box .row .k{color:var(--text-faint);}
+  .summary-box .row .v{color:var(--text);text-align:right;max-width:60%;}
+  #msg-out{min-height:100px;}
+  .done-badge{display:inline-flex;align-items:center;gap:8px;color:var(--positive);font-weight:700;font-size:13.5px;background:rgba(169,174,214,0.1);border:1px solid rgba(169,174,214,0.3);border-radius:99px;padding:7px 13px;margin-bottom:14px;}
+
+  footer.site{padding:36px 0 50px;color:var(--text-faint);font-size:12.5px;text-align:center;border-top:1px solid var(--border-soft);}
+
+  @media (max-width:860px){
+    .stat-strip{grid-template-columns:1fr 1fr;}
+    .qual-grid{grid-template-columns:1fr;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .bignum-grid{grid-template-columns:1fr 1fr;}
+    .stake-list{flex-direction:column;align-items:stretch;}
+    .stake-list li{justify-content:center;}
+    .opt-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .svc-grid{grid-template-columns:1fr;}
+    .bignum-grid{grid-template-columns:1fr;}
+    section{padding:48px 0;}
+    .apply-shell{padding:20px;}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<header class="site">
+  <div class="site-inner">
+    <div class="brand"><span class="mark">M</span>MetaPR</div>
+    <a class="btn btn-primary btn-sm" href="#apply">Запишитесь на бесплатную консультацию →</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1. HERO: заголовок + одна кнопка -->
+  <section class="hero">
+    <h1>ГОТОВЫ МАСШТАБИРОВАТЬ ПРОДАЖИ ЧЕРЕЗ META, TIKTOK И YOUTUBE В 2026?</h1>
+    <div class="hero-ctas">
+      <a class="btn btn-primary btn-lg" href="#apply">Запишитесь на бесплатную консультацию →</a>
+    </div>
+
+    <!-- 2. слайдер кейсов сразу под первым экраном -->
+    <div class="slider">
+      <div class="slide">
+        <div class="ptag">Трейдинг · EN · Tier-1</div>
+        <div class="pframe"><div class="pphoto" style="background-image:url('cases/trading-34.jpg')"></div></div>
+        <h3>Образовательная платформа</h3>
+        <div class="prow"><span class="l">Бюджет → Выручка</span><span class="v up">$800K → $1.5M</span></div>
+        <div class="prow"><span class="l">ROAS</span><span class="v up">200%</span></div>
+      </div>
+      <div class="slide">
+        <div class="ptag">Консалтинг · RU/EU</div>
+        <div class="pframe"><div class="pphoto" style="background-image:url('cases/evo-34.jpg')"></div></div>
+        <h3>Консалтинг для предпринимателей</h3>
+        <div class="prow"><span class="l">Бюджет → Выручка</span><span class="v up">$124K → $711K</span></div>
+        <div class="prow"><span class="l">ROAS</span><span class="v up">в минусе → 580%</span></div>
+        <div class="prow"><span class="l">Цена квал. лида</span><span class="v up">$100 → $42</span></div>
+      </div>
+      <div class="slide">
+        <div class="ptag">Запуск · EN · Tier-1</div>
+        <div class="pframe"><div class="pphoto" style="background-image:url('cases/launches-34.jpg')"></div></div>
+        <h3>Обучение запускам</h3>
+        <div class="prow"><span class="l">Бюджет</span><span class="v">$5K → $51K</span></div>
+        <div class="prow"><span class="l">Выручка</span><span class="v up">$113K (+ $160K заказов у отдела продаж)</span></div>
+        <div class="prow"><span class="l">ROAS</span><span class="v up">220%</span></div>
+      </div>
+      <div class="slide">
+        <div class="ptag">EdTech · RU/EU</div>
+        <div class="pframe"><div class="pphoto" style="background-image:url('cases/confectionery-34.jpg')"></div></div>
+        <h3>Кондитерская школа</h3>
+        <div class="prow"><span class="l">Бюджет</span><span class="v">$285K за 2,5 года → 17 воронок</span></div>
+        <div class="prow"><span class="l">ROAS лучших связок</span><span class="v up">250%</span></div>
+      </div>
+    </div>
+
+    <!-- 3. позиционирование, сразу под кейсами -->
+    <div class="position center" style="margin-top:44px;">
+      <h2>Агентство трафика полного цикла для растущих брендов</h2>
+      <p>Помогаем онлайн-школам и EdTech пробить потолок роста системным трафиком на Meta, TikTok и YouTube — без операционки на вашей стороне.</p>
+    </div>
+
+    <!-- 4. крупные агрегированные метрики -->
+    <div class="stat-strip">
+      <div class="cell"><div class="v num">12</div><div class="l">специалистов без расфокуса на 60 проектов</div></div>
+      <div class="cell"><div class="v num">$5 000 000+</div><div class="l">бюджетов под управлением</div></div>
+      <div class="cell"><div class="v num">200–300%</div><div class="l">ROAS по проектам</div></div>
+      <div class="cell"><div class="v">RU+EN</div><div class="l">рынки запусков</div></div>
+    </div>
+    <div class="hero-ctas" style="margin-top:28px;"><a class="btn btn-primary btn-lg" href="#apply">Запишитесь на бесплатную консультацию →</a></div>
+  </section>
+
+  <!-- 6. услуги -->
+  <section>
+    <div class="section-head"><h2>Что мы предлагаем</h2></div>
+    <div class="svc-grid">
+      <div class="svc-card"><h3>Платный трафик</h3><p>Управляем платным трафиком в Meta, TikTok и YouTube так, чтобы он давал стабильный рост продаж, а не разовые скачки от запуска к запуску — за счёт глубокой аналитики, которая выстроена у нас в каждом проекте.</p></div>
+      <div class="svc-card"><h3>Продакшн креативов</h3><p>Креативы, которые не выгорают за неделю: отдельный отдел монтажа и дизайна под каждый канал и рынок держит внимание аудитории дольше и снижает стоимость клика.</p></div>
+      <div class="svc-card"><h3>Копирайтинг</h3><p>RU и EN — это разные рынки с разной аудиторией, поэтому подход в текстах для каждой будет разным: мы пишем так, чтобы текст сам находил свою аудиторию, снижал стоимость клика и повышал конверсию — со своим хуком и своей болью под каждый рынок, а не перевод одного объявления на два языка.</p></div>
+      <div class="svc-card"><h3>Исследование аудитории</h3><p>Прежде чем запускать трафик и тратить ваши деньги, разбираем ваш продукт, конкурентов и то, что уже пробовали в рекламе — чтобы не платить за гипотезы, которые уже не сработали, и быстрее найти рабочую стратегию.</p></div>
+      <div class="svc-card"><h3>Свои кабинеты — без блокировок</h3><p>Работаем через свои аккаунты Meta, TikTok и YouTube, поэтому риск блокировки — это наш риск, а не ваш: если один аккаунт блокируют, мы сами переключаем трафик на другой без вашего участия.</p></div>
+      <div class="svc-card"><h3>Отчётность каждый день</h3><p>Вы всегда знаете, куда идут деньги: ежедневная таблица с ключевыми показателями и еженедельный отчёт — что сработало, что нет и что делаем дальше, без сюрпризов в конце месяца.</p></div>
+    </div>
+    <div class="cta-inline"><a class="btn btn-primary" href="#apply">Запишитесь на бесплатную консультацию →</a></div>
+  </section>
+
+  <!-- 7. методология -->
+  <section id="process">
+    <div class="section-head"><h2>Как мы достигаем результата</h2><p style="color:var(--text-muted);margin-top:10px;font-size:14.5px;">Нажимайте на шаги ниже — путь пройден нашей командой уже не один раз.</p></div>
+    <div class="game-map" id="processMap">
+      <div class="gm-nodes">
+        <div class="gm-fill" id="gmFill"></div>
+        <button class="gm-node" data-step="0" type="button"><span class="gm-circle">1</span><span class="gm-label">Анализ проекта</span></button>
+        <button class="gm-node" data-step="1" type="button"><span class="gm-circle">2</span><span class="gm-label">Стратегия и креативы</span></button>
+        <button class="gm-node" data-step="2" type="button"><span class="gm-circle">3</span><span class="gm-label">Техническая база</span></button>
+        <button class="gm-node" data-step="3" type="button"><span class="gm-circle">4</span><span class="gm-label">Запуск рекламы</span></button>
+        <button class="gm-node" data-step="4" type="button"><span class="gm-circle">5</span><span class="gm-label">Аналитика</span></button>
+        <button class="gm-node" data-step="5" type="button"><span class="gm-circle">6</span><span class="gm-label">Масштабирование</span></button>
+      </div>
+      <div class="gm-panel">
+        <div class="gm-panel-item" data-step="0">
+          <span class="idx">Шаг 01</span>
+          <h3>Анализ проекта</h3>
+          <p class="lead">Хорошая рекламная кампания начинается не с креатива, а с анализа — иначе бюджет уходит на догадки.</p>
+          <p>Разбираем ваш продукт, воронку и весь прошлый опыт в рекламе до запуска, а не после того, как бюджет уже потрачен.</p>
+          <ul class="p-checklist"><li>Анализ продукта и конкурентов</li><li>Разбор прошлых кампаний: что сработало, что нет</li><li>Сегментация аудитории и первые гипотезы по каналам</li></ul>
+        </div>
+        <div class="gm-panel-item" data-step="1">
+          <span class="idx">Шаг 02</span>
+          <h3>Согласование стратегии и креативов</h3>
+          <p class="lead">Стратегия и первые креативы утверждаются до старта, а не додумываются по ходу дела.</p>
+          <p>Фиксируем KPI, каналы и первые креативы на созвоне — у команды и клиента с первого дня одно понимание цели.</p>
+          <ul class="p-checklist"><li>KPI и бюджет по каналам</li><li>Первые креативы и офферы</li><li>Сроки и зоны ответственности</li></ul>
+        </div>
+        <div class="gm-panel-item" data-step="2">
+          <span class="idx">Шаг 03</span>
+          <h3>Подготовка технической составляющей</h3>
+          <p class="lead">Без верной аналитики решения принимаются на глаз, а не на данных.</p>
+          <p>Настраиваем пиксели, аналитику и доступы заранее, чтобы данные считались точно с первого дня.</p>
+          <ul class="p-checklist"><li>Пиксели установлены и проверены</li><li>Сквозная аналитика настроена</li><li>Доступы и кабинеты готовы к запуску</li></ul>
+        </div>
+        <div class="gm-panel-item" data-step="3">
+          <span class="idx">Шаг 04</span>
+          <h3>Запуск рекламы</h3>
+          <p class="lead">Запуск — это не просто включение бюджета, а старт наблюдения за всем путём клиента.</p>
+          <p>Запускаем первые кампании и следим за каждым шагом: от показа объявления до заявки.</p>
+          <ul class="p-checklist"><li>Первые кампании на выбранных площадках</li><li>Контроль всего пути от показа до заявки</li><li>Быстрая реакция на первые сигналы</li></ul>
+        </div>
+        <div class="gm-panel-item" data-step="4">
+          <span class="idx">Шаг 05</span>
+          <h3>Аналитика и корректировки</h3>
+          <p class="lead">Реклама не работает одинаково всегда — она требует постоянной калибровки.</p>
+          <p>Слабые связки останавливаем, рабочие масштабируем — цена лида стабилизируется, а не скачет от недели к неделе.</p>
+          <ul class="p-checklist"><li>Ежедневный контроль показателей</li><li>Отключение неэффективных объявлений</li><li>Усиление того, что реально работает</li></ul>
+        </div>
+        <div class="gm-panel-item" data-step="5">
+          <span class="idx">Шаг 06</span>
+          <h3>Масштабирование</h3>
+          <p class="lead">Рост бюджета без разбора — это не масштабирование, а слив денег.</p>
+          <p>Подключаем новые каналы и рынки и увеличиваем бюджет там, где отдача выше.</p>
+          <ul class="p-checklist"><li>Расширение на новые каналы и рынки</li><li>Перераспределение бюджета в пользу лучших связок</li><li>Рост без потери эффективности</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="cta-inline"><a class="btn btn-primary" href="#apply">Запишитесь на бесплатную консультацию →</a></div>
+  </section>
+
+  <!-- 9. 8 кейсов с большими цифрами -->
+  <section id="cases">
+    <div class="section-head"><h2>Результаты проектов MetaPR</h2><p style="color:var(--text-muted);margin-top:10px;font-size:15px;">Некоторые партнёры, которых мы помогли развить и масштабировать через трафик.</p></div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="eyebrow">📦 Онлайн-школа для WB-менеджеров · Meta + TikTok + YouTube</div>
+        <h3>WB Manager</h3>
+        <div class="case-shot"><img src="cases/wb-manager.png" alt="Instagram-профиль Малкина Дана — WB Manager"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$97 000</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$299 000</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×3</span></div>
+          <div class="srow"><span>Регистраций</span><span class="v">108 306</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">🌍 Коучинг / инфопродукты · EN рынок · трафик для живого запуска с нуля</div>
+        <h3>Зарубежный запуск (Дженни)</h3>
+        <div class="case-shot"><img src="cases/jenny.png" alt="Instagram-профиль Jenny Dinovi"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$5 000</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$20 000</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×4+</span></div>
+          <div class="srow"><span>Регистраций</span><span class="v">1 032</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">🎓 EdTech · Курсы для девушек · КЗ</div>
+        <h3>Qool.pro</h3>
+        <div class="case-shot"><img src="cases/qool.png" alt="Instagram-профиль Qool.pro"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$13 000</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$42 000</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×3 (ROMI 223%)</span></div>
+          <div class="srow"><span>Регистраций</span><span class="v">4 736</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">🎓 EdTech · Школа турагентов · СНГ + Европа</div>
+        <h3>Work in Travel</h3>
+        <div class="case-shot"><img src="cases/travel.png" alt="Instagram-профиль Лия Шарифьянова — Work in Travel"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$18 835</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$38 186</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×2 (203%)</span></div>
+          <div class="srow"><span>Регистраций</span><span class="v">20 900</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">🎓 EdTech · Таргетированная реклама · КЗ + СНГ + Европа</div>
+        <h3>Школа по таргету</h3>
+        <div class="case-shot"><img src="cases/bustaew.png" alt="Instagram-профиль Тимур Бустаев — Школа по таргету"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$81 727</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$245 000</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×3</span></div>
+          <div class="srow"><span>Регистраций</span><span class="v">44 067</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">📈 Трейдинг / финансы · EN рынок · USA, Canada, EU</div>
+        <h3>Образовательная платформа по трейдингу</h3>
+        <div class="case-shot"><img src="cases/trading.png" alt="Instagram-профиль Томас Кралов — образовательная платформа по трейдингу"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$800 000+</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$1 500 000+</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×2 (лучший запуск ×3)</span></div>
+          <div class="srow"><span>Лидов</span><span class="v">89 000</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">🚀 Обучение запускам · EN рынок · USA, Canada, EU</div>
+        <h3>Обучение запускам</h3>
+        <div class="case-shot"><img src="cases/afnan.png" alt="Instagram-профиль Afnan Khalifa"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$51 000</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$113 000</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">×2.2</span></div>
+          <div class="srow"><span>Регистраций</span><span class="v">84 130</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="eyebrow">💼 Консалтинг · Выход из операционки · RU рынок</div>
+        <h3>ЭВО — консалтинг для предпринимателей</h3>
+        <div class="case-shot"><img src="cases/frolov.png" alt="Instagram-профиль Евгений Фролов — ЭВО"></div>
+        <div class="case-stats">
+          <div class="srow"><span>Рекламный бюджет</span><span class="v">$41 000</span></div>
+          <div class="srow"><span>Выручка</span><span class="v up">$238 000+</span></div>
+          <div class="srow"><span>ROAS</span><span class="v up">~580%</span></div>
+          <div class="srow"><span>Квал. лидов</span><span class="v">1 000+</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. отзывы -->
+  <section id="testimonials">
+    <div class="section-head">
+      <h2><span style="color:var(--accent-strong);">Отзывы</span> наших клиентов:</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-shot"><img src="testimonials/oleg.png" alt="Отзыв клиента Олега Заостровцева в переписке, с пруфами оплат"></div>
+      <div class="testi-shot"><img src="testimonials/kristina.png" alt="Отзыв клиентки Кристины Ильиной в переписке"></div>
+      <div class="testi-shot"><img src="testimonials/oplaty.png" alt="Переписка про 16 оплат за вчера"><img src="testimonials/fbphilipp-payments.png" alt="Переписка с подтверждениями оплат 1997$ и предоплаты 100$"></div>
+    </div>
+  </section>
+
+  <!-- 11. сравнение (3 колонки, как у Irongate) -->
+  <section id="compare">
+    <div class="section-head"><h2>Более разумный выбор для масштабирования бренда</h2></div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th>Критерий</th><th class="hl">Партнёр по трафику полного цикла</th><th>Классическое агентство</th><th>Фрилансер</th></tr></thead>
+        <tbody>
+          <tr class="cmp-sentence-row"><td colspan="4">Трафик и креатив живут в одной команде, а не у разных подрядчиков, которых нужно сводить между собой.</td></tr>
+          <tr><td class="crit">Трафик + креатив в одной команде</td><td class="hl"><span class="mk y"><span class="ic">✓</span>Полный цикл в одних руках</span></td><td><span class="mk n"><span class="ic">✗</span>Разные подрядчики</span></td><td><span class="mk n"><span class="ic">✗</span>Делает всё один человек</span></td></tr>
+
+          <tr class="cmp-sentence-row"><td colspan="4">Блокировка рекламного кабинета — управляемый риск, а не угроза остановки продаж.</td></tr>
+          <tr><td class="crit">Риск блокировки кабинета</td><td class="hl"><span class="mk y"><span class="ic">✓</span>Свои кабинеты — трафик не останавливается</span></td><td><span class="mk n"><span class="ic">✗</span>Ваш кабинет — ваш риск</span></td><td><span class="mk n"><span class="ic">✗</span>Ваш кабинет — разбираетесь сами</span></td></tr>
+
+          <tr class="cmp-sentence-row"><td colspan="4">Работа не заканчивается на открутке бюджета — важно, что происходит с лидом дальше, до самой продажи.</td></tr>
+          <tr><td class="crit">Погружение в воронку и продажи</td><td class="hl"><span class="mk y"><span class="ic">✓</span>Смотрим воронку, подключаемся к отделу продаж</span></td><td><span class="mk n"><span class="ic">✗</span>Только открут бюджета</span></td><td><span class="mk n"><span class="ic">✗</span>Без поддержки воронки</span></td></tr>
+
+          <tr class="cmp-sentence-row"><td colspan="4">За каждым каналом и задачей стоит отдельный специалист, а не один универсал на всё.</td></tr>
+          <tr><td class="crit">Специализация в команде</td><td class="hl"><span class="mk y"><span class="ic">✓</span>12 специалистов, каждый на своей зоне</span></td><td><span class="mk n"><span class="ic">✗</span>Универсальные менеджеры</span></td><td><span class="mk n"><span class="ic">✗</span>Один человек за всё</span></td></tr>
+
+          <tr class="cmp-sentence-row"><td colspan="4">Рост бюджета требует не только денег — нужен постоянный поток новых креативов и опыт, который удерживает эффективность.</td></tr>
+          <tr><td class="crit">Масштабирование бюджета</td><td class="hl"><span class="mk y"><span class="ic">✓</span>Свой конвейер креативов + опыт масштабирования крупных бюджетов</span></td><td><span class="mk n"><span class="ic">✗</span>Повышают бюджет, креативы выгорают — заявка дорожает, ROAS падает</span></td><td><span class="mk n"><span class="ic">✗</span>На большом бюджете один специалист выгорает первым</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 12. "our money's on the table too" -->
+  <section class="stake center">
+    <div class="section-head"><h2>Наши деньги тоже на кону</h2></div>
+    <p>Мы зарабатываем, только когда зарабатываете вы: наша комиссия — это доля от продаж, а не плата за потраченный бюджет.</p>
+    <ul class="stake-list">
+      <li><b>Без долгих контрактов</b></li>
+      <li><b>Без скрытых платежей</b></li>
+      <li><b>5% от того, что реально продано</b></li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-head"><h2>Частые вопросы</h2></div>
+    <div>
+      <details class="faq"><summary>Сколько это стоит?<span class="plus">+</span></summary><div class="a">Мы берём 5% от продаж по вашим открытым отчётам об оплатах, а не процент от рекламного бюджета. Например: при обороте $30 000/мес комиссия составит $1 500 — нам самим выгодно, чтобы этот оборот рос.</div></details>
+      <details class="faq"><summary>При любом обороте действует 5%?<span class="plus">+</span></summary><div class="a">Комиссия 5% действует при обороте от $27 000/мес по открытым отчётам об оплатах, которые предоставляет клиент. Если оборот пока меньше, действует фиксированная плата $1 280/мес — она покрывает работу команды на старте, пока обороты растут.</div></details>
+      <details class="faq"><summary>Работали с проектами вроде моего?<span class="plus">+</span></summary><div class="a">Мы работали со многими нишами: EdTech, трейдинг, коучинг, консалтинг, психология, туризм, курсы по похудению, школа по маркетплейсам, недвижимость, финансовые вертикали, инвестиции, продажа бань и домов премиум-класса, бьюти, доставка еды, товарный бизнес — и многие другие, на русскоязычном и зарубежном рынках. Мы можем применить наш подход и методы к любой нише. <a href="#apply">Оставьте заявку</a>, чтобы узнать больше о том, как мы можем быть полезны вашему бизнесу.</div></details>
+      <details class="faq"><summary>Есть ли длинный контракт?<span class="plus">+</span></summary><div class="a">Нет фиксированных долгосрочных контрактов — работа строится вокруг результата, а не бумаг.</div></details>
+      <details class="faq"><summary>Как устроена коммуникация с командой?<span class="plus">+</span></summary><div class="a">Вся коммуникация проходит в одном отдельном чате — так удобнее, и ничего не теряется в переписках. За вашим проектом закрепляется проджект-менеджер: сильный специалист по рекламе, который курирует работу таргетолога и помогает добиваться результата в проекте, а также отвечает за связь с вами. В том же чате — руководитель и основатель агентства, к которым можно обратиться напрямую в любой момент.</div></details>
+      <details class="faq"><summary>Как понять, что вы не очередное агентство с пустыми обещаниями?<span class="plus">+</span></summary><div class="a">Доверие лучше строить на фактах, а не на словах: результаты по реальным проектам — выше на этой странице. Мы не привязываем вас долгим контрактом: если результат не устроит, вы вольны уйти — и это единственная гарантия, которая по-настоящему имеет смысл. А если что-то пойдёт не по плану — мы скажем об этом прямо, а не станем маскировать это красивыми отчётами.</div></details>
+    </div>
+  </section>
+
+  <!-- 13. финальный CTA -->
+  <section>
+    <div class="final-cta center">
+      <h2>ГОТОВЫ? МЫ ТОЖЕ.</h2>
+      <p>Помогаем онлайн-школам и EdTech выйти на новый уровень трафика и продаж через Meta, TikTok и YouTube в 2026 году.</p>
+      <p style="margin-top:6px;">Команда берёт ограниченное число проектов одновременно — заявки закрываем по мере заполнения мест.</p>
+      <div class="hero-ctas"><a class="btn btn-primary btn-lg" href="#apply">Запишитесь на бесплатную консультацию →</a></div>
+    </div>
+  </section>
+
+  <!-- 14. форма записи -->
+  <section id="apply">
+    <div class="section-head"><h2>Оставьте заявку на аудит</h2></div>
+    <div class="wrap-narrow">
+      <div class="apply-shell">
+        <div class="apply-top">
+          <div class="steps-dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <a class="step-skip" href="https://t.me/philyandovski" target="_blank" rel="noopener">Написать в Telegram →</a>
+        </div>
+
+        <div class="step active" data-step="1">
+          <h3>Какой у вас средний оборот в месяц?</h3>
+          <div class="opt-grid" data-group="revenue">
+            <button type="button" class="opt">до $10 000</button>
+            <button type="button" class="opt">$10 000 – $30 000</button>
+            <button type="button" class="opt">$30 000 – $100 000</button>
+            <button type="button" class="opt">$100 000+</button>
+          </div>
+          <div class="step-actions"><span></span><button class="btn btn-primary" id="next1" disabled>Далее →</button></div>
+        </div>
+
+        <div class="step" data-step="2">
+          <h3>Расскажите о проекте</h3>
+          <div class="hint">Что за продукт и как сейчас приходят клиенты?</div>
+          <div class="field"><textarea id="about" rows="4" placeholder="Например: онлайн-школа по трейдингу, сейчас ведём Instagram и немного Meta Ads своими силами"></textarea></div>
+          <div class="step-actions"><button class="btn btn-ghost" data-back>← Назад</button><button class="btn btn-primary" id="next2" disabled>Далее →</button></div>
+        </div>
+
+        <div class="step" data-step="3">
+          <h3>Условия работы</h3>
+          <div class="disclosure">Агентский трафик под ключ — <b>5% от продаж</b> по открытым отчётам об оплатах (от $27 000/мес оборота), либо <b>$1 280/мес фикс</b>, если оборот пока меньше.</div>
+          <div class="opt-grid" data-group="terms" style="grid-template-columns:1fr;">
+            <button type="button" class="opt">Понимаю условия, готов(а) обсуждать</button>
+            <button type="button" class="opt">Пока не готов(а) — вопрос в Telegram</button>
+          </div>
+          <div class="step-actions"><button class="btn btn-ghost" data-back>← Назад</button><button class="btn btn-primary" id="next3" disabled>Далее →</button></div>
+        </div>
+
+        <div class="step" data-step="4">
+          <h3>Готовность к звонку</h3>
+          <div class="hint">Аудит-созвон — ~30 минут. Сможете на этой неделе?</div>
+          <div class="opt-grid" data-group="ready">
+            <button type="button" class="opt">Да, на этой неделе</button>
+            <button type="button" class="opt">Нужно больше времени</button>
+          </div>
+          <div class="field" style="margin-top:14px;"><label class="field-label" for="name">Имя</label><input type="text" id="name"></div>
+          <div class="field"><label class="field-label" for="contact">Telegram или email</label><input type="text" id="contact" placeholder="@username или email"></div>
+          <div class="step-actions"><button class="btn btn-ghost" data-back>← Назад</button><button class="btn btn-primary" id="next4" disabled>Отправить →</button></div>
+        </div>
+
+        <div class="step" data-step="5">
+          <span class="done-badge">✓ Заявка готова</span>
+          <h3>Отправьте заявку в Telegram</h3>
+          <div class="summary-box" id="summary"></div>
+          <div class="field"><textarea id="msg-out" readonly onclick="this.select()"></textarea></div>
+          <div class="step-actions" style="justify-content:flex-start;gap:12px;">
+            <button class="btn btn-ghost" id="copy-btn" type="button">Скопировать текст</button>
+            <a class="btn btn-primary" href="https://t.me/philyandovski" target="_blank" rel="noopener">Открыть @philyandovski →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">© MetaPR</footer>
+
+</main>
+
+<script>
+(function(){
+  const state = { revenue:null, about:'', terms:null, ready:null, name:'', contact:'' };
+  const steps = Array.from(document.querySelectorAll('.step'));
+  const dots = Array.from(document.querySelectorAll('#dots i'));
+  let current = 1;
+  function showStep(n){
+    steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === n));
+    dots.forEach((d,i) => { d.classList.toggle('on', i === n-1); d.classList.toggle('done', i < n-1); });
+    current = n;
+    document.getElementById('apply').scrollIntoView({block:'start', behavior:'smooth'});
+  }
+  document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => showStep(Math.max(1, current-1))));
+  function wireGroup(groupName, onPick){
+    const group = document.querySelector('[data-group="'+groupName+'"]');
+    if(!group) return;
+    group.querySelectorAll('.opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+        btn.classList.add('sel');
+        onPick(btn.textContent.trim());
+      });
+    });
+  }
+  wireGroup('revenue', val => { state.revenue = val; document.getElementById('next1').disabled = false; });
+  wireGroup('terms', val => { state.terms = val; document.getElementById('next3').disabled = false; });
+  wireGroup('ready', val => { state.ready = val; checkStep4(); });
+  document.getElementById('next1').addEventListener('click', () => showStep(2));
+  const aboutEl = document.getElementById('about');
+  aboutEl.addEventListener('input', () => { state.about = aboutEl.value.trim(); document.getElementById('next2').disabled = state.about.length < 6; });
+  document.getElementById('next2').addEventListener('click', () => showStep(3));
+  document.getElementById('next3').addEventListener('click', () => {
+    if(state.terms && state.terms.startsWith('Пока не готов')){ window.open('https://t.me/philyandovski','_blank'); return; }
+    showStep(4);
+  });
+  const nameEl = document.getElementById('name');
+  const contactEl = document.getElementById('contact');
+  function checkStep4(){
+    state.name = nameEl.value.trim();
+    state.contact = contactEl.value.trim();
+    document.getElementById('next4').disabled = !(state.ready && state.name.length>0 && state.contact.length>0);
+  }
+  nameEl.addEventListener('input', checkStep4);
+  contactEl.addEventListener('input', checkStep4);
+  document.getElementById('next4').addEventListener('click', () => {
+    const summary = document.getElementById('summary');
+    const rows = [['Оборот', state.revenue],['О проекте', state.about],['Условия', state.terms],['Готовность к звонку', state.ready],['Имя', state.name],['Контакт', state.contact]];
+    summary.innerHTML = rows.map(([k,v]) => '<div class="row"><span class="k">'+k+'</span><span class="v">'+ (v || '—').replace(/</g,'&lt;') +'</span></div>').join('');
+    const msg = ['Заявка с сайта MetaPR','— Оборот: ' + state.revenue,'— О проекте: ' + state.about,'— Условия: ' + state.terms,'— Готов(а) к звонку: ' + state.ready,'— Имя: ' + state.name,'— Контакт: ' + state.contact].join('\n');
+    document.getElementById('msg-out').value = msg;
+    showStep(5);
+  });
+  document.getElementById('copy-btn').addEventListener('click', function(){
+    const ta = document.getElementById('msg-out');
+    ta.select(); ta.setSelectionRange(0, 999999);
+    let ok = false;
+    try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(ta.value); ok = true; } }catch(e){}
+    if(!ok){ try{ ok = document.execCommand('copy'); }catch(e){} }
+    this.textContent = ok ? 'Скопировано ✓' : 'Выделите текст вручную';
+    setTimeout(() => { this.textContent = 'Скопировать текст'; }, 2200);
+  });
+})();
+
+(function(){
+  const map = document.getElementById('processMap');
+  if(!map) return;
+  const nodes = Array.from(map.querySelectorAll('.gm-node'));
+  const panels = Array.from(map.querySelectorAll('.gm-panel-item'));
+  const fill = document.getElementById('gmFill');
+  let maxVisited = 0;
+  function setActive(i){
+    maxVisited = Math.max(maxVisited, i);
+    nodes.forEach((n, idx) => {
+      n.classList.toggle('active', idx === i);
+      n.classList.toggle('done', idx <= maxVisited && idx !== i);
+    });
+    panels.forEach((p, idx) => p.classList.toggle('active', idx === i));
+    if(fill) fill.style.width = (maxVisited / (nodes.length - 1)) * 100 + '%';
+  }
+  nodes.forEach((n, idx) => n.addEventListener('click', () => setActive(idx)));
+  setActive(0);
+})();
+</script>
